@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavbarComponent from './component/NavbarComponent';
+import FooterComponent from './component/FooterComponent';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/styles.css';
+import './styles/navAndFooter.css';
+import './styles/jobs.css';
+import './styles/roleselection.css';
+import './styles/about.css';
+
+import Index from './pages/index';
+import About from './pages/about';
+import JobsLanding from './pages/jobsLanding';
+import Roleselection from './pages/roleselection';  
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavbarComponent />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} /> 
+        <Route path="/jobsLanding" element={<JobsLanding />} />
+        <Route path="/roleselection" element={<Roleselection />} />
+      </Routes>
+      <FooterComponent />
+    </Router>
   );
 }
 
