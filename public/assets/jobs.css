@@ -1,0 +1,55 @@
+.JobsTitle{
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 20px;
+    background-image: linear-gradient(45deg, #7ea1e0 , #103475 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.JobContainer{
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    width: 500px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    background-color: #7ea1e0;
+}
+
+.JobContainer img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.JobsFlex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.BottomContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;   
+    justify-content: space-between; 
+    max-width: 100%;
+    gap: 2rem; 
+    padding: 2rem;
+}
+
+.BottomHero {
+    font-size: 2rem;
+    width: 50%; 
+}
+
+#heroBottom {
+    max-width: 40%;  
+    height: auto;
+}

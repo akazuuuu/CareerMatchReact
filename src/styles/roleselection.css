@@ -1,0 +1,175 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.back-button-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.back-button {
+    background: white;
+    color: #2A5298;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.back-button:hover {
+    color: #2A5298;
+    text-decoration: none;
+}
+
+.back-arrow {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+.left-section {
+    background: #e8f2ff;
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-illustration {
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2A5298;
+}
+
+.right-section {
+    background: #2A5298;
+    color: white;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.continue-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.continue-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.user-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.user-card:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.user-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.user-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-type {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2A5298;
+    margin-bottom: 8px;
+}
+
+.user-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* Back button - show only arrow on mobile */
+    .back-button {
+        padding: 12px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        justify-content: center;
+    }
+    
+    .back-text {
+        display: none;
+    }
+    
+    .back-arrow {
+        margin-right: 0;
+    }
+    
+    /* Make sections stack vertically */
+    .left-section,
+    .right-section {
+        min-height: 50vh;
+    }
+    
+    /* Smaller text on mobile */
+    .brand-title {
+        font-size: 2.5rem;
+    }
+    
+    .continue-title {
+        font-size: 2rem;
+    }
+    
+    .main-illustration {
+        max-width: 300px;
+    }
+    
+    .user-card {
+        padding: 20px;
+    }
+    
+    .user-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    
+    .user-icon img {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,224 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+
+body{
+    background-image: 
+    linear-gradient(to right, rgba(61, 17, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px; /* grid size */
+}
+
+hr {
+  border: none; 
+  height: 4px;
+  background: linear-gradient(to right, #0F4C81, #4400ff);
+  margin: 30px auto;
+  width: 60%;
+}
+
+button{
+    display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #1D4ED8, #3B82F6);
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/*HERO 1 FLEXBOX*/
+
+
+.HeroContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 20px
+
+}
+
+.HeroContainer p{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.HeroContainer h1 {
+     background: #1D4ED8;
+background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-align: center;
+    font-size: 5.5rem;
+    line-height: 70px;
+    margin-top: 100px;
+
+}
+
+button{
+    font-size: 1.5rem;
+    width:15%;
+    box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
+}
+
+i{
+ font-size: 10rem;   
+}
+
+.Container2v2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto ;
+    gap: 100px;
+    margin-top: 100px;
+
+}
+
+.box1, .box2, .box3{
+    border: 2px #1D4ED8 solid;
+    padding: 1.5rem;
+    width: 200px;
+    text-align: center;
+    border-radius: 30px;
+    height: 200px;
+}
+
+
+.box1 h1,  .box2 h1, .box3 h1{
+    font-size: 3.5rem;
+    color: #3B82F6;
+}
+
+
+/*THE HERO 2 UNDER THE MAIN HERO */
+
+.Container3{
+    padding-top: 130px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 200px;
+    
+}
+
+.Container3v1{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.Hero2 button{
+    width: 15rem;
+}
+
+.Hero2Img img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    width: 800px;
+}
+
+.Hero2 h1{
+    background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+}
+
+.Hero2 {
+    width: 800px;
+    flex-direction: column;
+    gap: 300px;
+}
+
+.Hero2 p {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    font-size: 2rem;
+}
+
+.mobile-only{
+    display: none;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/*RESPONSIVE CODE GOES HERE*/
+
+@media(max-width: 760px) and (min-width: 320px) {
+
+
+    .Container2{
+        margin-top: 260px;
+    }
+    .mobile-only{
+        display: block;
+        position: absolute;
+        z-index: -9999;
+        margin-top: 70px;
+    }
+    #HeroTitle{
+        font-size: 3rem;
+        margin: 10px;
+    }
+
+    #HeroP{
+        font-size: 1.2rem;
+        margin-top: -20px;
+    }
+
+    #HeroButton{
+        width: 70%;
+        font-size: 1.5rem;
+    }
+
+    .Container2v2{
+        flex-direction: column;
+        gap: 40px;
+    }
+
+
+    /*CONTAINER 3 RESPOSNIVE */
+
+   @media (max-width: 768px) {
+    .Container3v1 {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .Hero2, .Hero2Img {
+        width: 100%;
+    }
+
+    .Hero2Img img {
+        max-width: 100%;
+        margin: 1rem auto;
+    }
+
+    #btnCreate {
+        width: 90%;
+    }
+
+    .Hero2 p{
+        font-size: 1.5rem;
+    }
+    
+    
+}
+}
