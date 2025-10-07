@@ -1,10 +1,17 @@
 import React from "react";
 import Hero2Img from "../images/Hero2Img.png";
 import mobileview from "../images/mobileview.jpg";
+import desktopBg from "../images/mainbg.jpg"; 
+import '../styles/styles.css';
 
 function Index() {
   return (
     <div>
+      
+      <div className="desktop-bg-container">
+        <div className="desktop-bg-image"></div>
+      </div>
+
       <div className="HeroContainer">
         <div className="mobile-only">
           <img src={mobileview} alt="Mobile View" />
