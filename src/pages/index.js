@@ -7,7 +7,7 @@ function Index() {
     <div>
       <div className="HeroContainer">
         <div className="mobile-only">
-          <img src="images/mobileview.jpg" alt="Mobile View" />
+          <img src={mobileview} alt="Mobile View" />
         </div>
         <h1 id="HeroTitle">
           Your Dream <br /> Career Awaits
@@ -37,7 +37,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <hr />
+      
 
       <div className="Container3">
         <div className="Container3v1">

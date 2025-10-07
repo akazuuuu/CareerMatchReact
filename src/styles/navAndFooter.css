@@ -27,7 +27,7 @@
 }
 
 .navRight {
-  flex: 1;
+
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -65,17 +65,7 @@
 }
 
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  width: auto;
-  height: auto;
-}
+
 
 .hamburger span {
   display: block;
@@ -86,18 +76,22 @@
   transition: 0.3s;
 }
 
-
 .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      width: auto;
-      height: auto;
-    }
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 1rem;
+  top: 0.2rem;
+  z-index: 1100;
+}
 
     .hamburger span {
       display: block;

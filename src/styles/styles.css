@@ -12,6 +12,13 @@ body{
   background-size: 40px 40px; /* grid size */
 }
 
+html, body {
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
 hr {
   border: none; 
   height: 4px;
@@ -24,11 +31,11 @@ hr {
 button{
     display: inline-block;
   padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
   background: linear-gradient(to right, #1D4ED8, #3B82F6);
   color: #FFFFFF;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
+  border-radius: 60px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -48,7 +55,8 @@ button{
 }
 
 .HeroContainer p{
-    font-size: 2rem;
+    font-size: 1 rem;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -67,9 +75,11 @@ text-align: center;
 button{
     font-size: 1.5rem;
     width:15%;
+    height: 20%;
     box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
 -webkit-box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 1px 10px 27px 0px rgba(0,0,0,0.75);
+border-radius: 50;
 }
 
 i{
@@ -91,6 +101,7 @@ i{
     border: 2px #1D4ED8 solid;
     padding: 1.5rem;
     width: 200px;
+    font-size: medium;
     text-align: center;
     border-radius: 30px;
     height: 200px;
@@ -99,28 +110,29 @@ i{
 
 .box1 h1,  .box2 h1, .box3 h1{
     font-size: 3.5rem;
+    font-weight: bold;
     color: #3B82F6;
 }
 
 
 /*THE HERO 2 UNDER THE MAIN HERO */
-
-.Container3{
-    padding-top: 130px;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding-bottom: 200px;
-    
+.Container3 {
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  margin: 0 auto;
+  min-height: 100vh;        
+  text-align: center;
+  padding: 0;
 }
 
-.Container3v1{
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+.Container3v1 {
+  display: flex;
+  flex-direction: row;      
+  justify-content: center;
+  align-items: center;
+  gap: 80px;                 
+  margin: 0 auto;
 }
 
 .Hero2 button{
@@ -128,9 +140,10 @@ i{
 }
 
 .Hero2Img img{
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     display: block;
+   
     width: 800px;
 }
 
@@ -187,6 +200,7 @@ i{
     #HeroButton{
         width: 70%;
         font-size: 1.5rem;
+        border-radius: 50px;
     }
 
     .Container2v2{
