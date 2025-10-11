@@ -55,7 +55,7 @@ body {
 }
 
 .right-section {
-    background: #2A5298;
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%) !important;
     color: white;
     padding: 40px 20px;
     min-height: 100vh;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../styles/LoginSeeker.css';
-import workImage from "../images/work.png"; // Fixed image import
+import workImage from "../images/work.png";
 
 function LoginSeeker() {
   const [formData, setFormData] = useState({
@@ -9,108 +8,232 @@ function LoginSeeker() {
     password: ''
   });
   
-  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    if (error) setError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle job seeker login logic here
-    console.log('Job Seeker Login:', formData);
-    // After successful login, navigate to dashboard
-    // navigate('/seeker-dashboard');
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://sheetdb.io/api/v1/i05rli7aljn7d');
+      const users = await response.json();
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data');
+      }
+
+      console.log('All users from SheetDB:', users);
+
+      const user = users.find(u => 
+        u.Email?.toLowerCase() === formData.email.toLowerCase() && 
+        u.Password === formData.password
+      );
+
+      if (user) {
+        console.log('Login successful:', user);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('isAuthenticated', 'true');
+        
+        alert('Login successful! Redirecting to dashboard...');
+        // Redirect to seeker Main Page
+        window.location.href = '/MainPage';
+      } else {
+        setError('Invalid email or password. Please try again.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setError('Failed to login. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleBack = () => {
-    navigate(-1); // Go back to previous page
+  // Navigation handlers for buttons
+  const handleForgotPassword = () => {
+    // Navigate to forgot password form
+    console.log('Navigating to forgot password form');
+    window.location.href = '/';
+  };
+
+  const handleGoogleLogin = () => {
+    // Navigate to Google OAuth or next form
+    console.log('Proceeding with Google login');
+    // For demo, redirect to a placeholder
+    window.location.href = '/';
+  };
+
+  const handleFacebookLogin = () => {
+    // Navigate to Facebook OAuth or next form
+    console.log('Proceeding with Facebook login');
+    // For demo, redirect to a placeholder
+    window.location.href = '/';
+  };
+
+  const handleCreateAccount = () => {
+    // Navigate to registration form
+    console.log('Navigating to registration form');
+    window.location.href = '/RegisterSeeker';
+  };
+
+  const handleBackButton = () => {
+    // Navigate back to home or previous page
+    console.log('Navigating back to home');
+    window.location.href = '/';
   };
 
   return (
-    <div>
-  
     <div className="container-fluid p-0">
       <div className="row g-0 min-vh-100">
+
+        {/* Left Section */}
         <div className="col-lg-6 left-section d-flex align-items-center justify-content-center">
-          <div className="text-center px-4">
-            <div className="illustration-container mb-4">
-              <img 
-                src={workImage} // Fixed: Using imported variable
-                alt="Career Matching Illustration" 
-                className="img-fluid main-illustration"
-              />
+          <a 
+            href="/" 
+            className="back-button-left-section"
+            onClick={(e) => {
+              e.preventDefault();
+              handleBackButton();
+            }}
+          > 
+            ← Back 
+          </a>
+
+          <div className="text-center px-3">
+            <div className="welcome-content mb-4">
+              <h1 className="welcome-title">Welcome to</h1> 
+              <h1 className="company-name">CareerMatch</h1>
             </div>
-            <h1 className="title">CareerMatch</h1>
+            
+            <div className="illustration-container">
+              <img src={workImage} alt="Career Matching Illustration" className="img-fluid main-illustration"/>
+            </div>
           </div>
         </div>
 
-        <div className="col-lg-6 right-section d-flex align-items-center">
-          <div className="w-100 px-4 px-lg-5">
-            <div className="mb-4">
-              <button 
-                onClick={handleBack}
-                className="btn btn-outline-secondary mb-3"
-              >
-                ← Back
-              </button>
-              <h2 className="continue-title">Login</h2>
-              <p className="continue-subtitle">
-                Welcome back! Please login to your account
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit}>
-              <div className="form-group mb-3">
-                <label htmlFor="email" className="form-label">Email Address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+        {/* Right Section */}
+        <div className="col-lg-6 right-section d-flex align-items-center justify-content-center">
+          <div className="login-form-wrapper">
+            <div className="login-content">
+              <div className="mb-3">
+                <h2 className="login-title">Login to Your Account</h2> 
+                <p className="login-subtitle">Please enter your credentials to continue</p>
               </div>
 
-              <div className="form-group mb-4">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+              {error && (
+                <div className="alert alert-error">
+                  {error}
+                </div>
+              )}
 
-              <button type="submit" className="btn btn-primary w-100">
-                Login as Job Seeker
-              </button>
-            </form>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group mb-2">
+                  <label htmlFor="email" className="form-label">Email Address</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email address" 
+                    required
+                  />
+                </div>
 
-            <div className="text-center mt-3">
-              <p>
-                Don't have an account?{' '}
-                <span 
-                  className="text-decoration-none text-primary" 
-                  style={{cursor: 'pointer'}}
-                  onClick={() => navigate('/register-seeker')}
+                <div className="form-group mb-2">
+                  <label htmlFor="password" className="form-label">Password</label>
+                  <div className="password-input-container">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className="form-control"
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Enter your password" 
+                      required 
+                    />
+                    <button 
+                      type="button" 
+                      className="password-toggle" 
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="forgot-password-container mb-3">
+                  <button 
+                    type="button"
+                    className="btn-forgot-password"
+                    onClick={handleForgotPassword}
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="btn-login w-100 mb-3"
+                  disabled={isLoading}
                 >
-                  Sign up here
-                </span>
-              </p>
+                  {isLoading ? 'Signing In...' : 'Sign In'}
+                </button>
+              </form>
+
+              <div className="divider mb-3">
+                <span>or continue with</span>
+              </div>
+
+              <div className="social-login-buttons mb-3">
+                <button 
+                  className="btn-social btn-google"
+                  onClick={handleGoogleLogin}
+                  disabled={isLoading}
+                >
+                  <span className="social-icon">G</span> Google 
+                </button>
+                
+                <button 
+                  className="btn-social btn-facebook"
+                  onClick={handleFacebookLogin}
+                  disabled={isLoading}
+                >
+                  <span className="social-icon">f</span> Facebook 
+                </button>
+              </div>
+
+              <div className="signup-container"> 
+                <p> 
+                  Don't have an account?{' '}
+                  <a 
+                    href="/RegisterSeeker" 
+                    className="btn-signup-link"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleCreateAccount();
+                    }}
+                  >
+                    Create Account  
+                  </a> 
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }
