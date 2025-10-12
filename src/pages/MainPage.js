@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import { db } from '../pages/Firebase'; // Make sure to import your Firebase config
+import { db } from '../pages/Firebase';
+import NavbarSeeker from '../component/NavbarSeeker'; // ✅ import your navbar
 import '../styles/MainPage.css';
 
 const MainPage = () => {
@@ -9,7 +10,6 @@ const MainPage = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
-  const [isNavOpen, setIsNavOpen] = useState(false);
 
   const cardStackRef = useRef(null);
 
@@ -18,7 +18,6 @@ const MainPage = () => {
     try {
       const q = query(collection(db, "jobPosts"), orderBy("datePosted", "desc"));
       const snapshot = await getDocs(q);
-      
       const jobsData = snapshot.docs.map((doc) => doc.data());
       setJobs(jobsData);
     } catch (err) {
@@ -26,7 +25,7 @@ const MainPage = () => {
     }
   };
 
-  // Create card element
+  // Create job cards
   const createCard = (job, index) => {
     const logo = job.logo 
       ? `<img src="${job.logo}" alt="Logo" style="width:100%;height:100%;border-radius:16px;object-fit:cover;">`
@@ -59,7 +58,7 @@ const MainPage = () => {
     );
   };
 
-  // Update card positions
+  // Update card stacking
   const updateCardPositions = () => {
     const cards = document.querySelectorAll(".job-card");
     cards.forEach((card) => {
@@ -112,7 +111,7 @@ const MainPage = () => {
     }
   };
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = () => {
     if (!isDragging) return;
     setIsDragging(false);
     
@@ -135,14 +134,11 @@ const MainPage = () => {
 
   const animateSwipe = (card, direction) => {
     if (!card) return;
-    
     const moveX = direction === "right" ? 1000 : -1000;
     card.style.transform = `translateX(${moveX}px) rotate(${direction === "right" ? 30 : -30}deg)`;
     card.style.opacity = "0";
     
-    setTimeout(() => {
-      setCurrentIndex(prev => prev + 1);
-    }, 300);
+    setTimeout(() => setCurrentIndex((prev) => prev + 1), 300);
   };
 
   const swipeLeft = () => {
@@ -157,75 +153,18 @@ const MainPage = () => {
     animateSwipe(card, "right");
   };
 
-  // Effect to update card positions when currentIndex changes
   useEffect(() => {
     updateCardPositions();
   }, [currentIndex, jobs]);
 
-  // Effect to load jobs on component mount
   useEffect(() => {
     loadJobs();
   }, []);
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
-  };
-
   return (
-    <div className={`main-page ${isNavOpen ? 'nav-open' : ''}`}>
-      {/* Navbar */}
-      <nav className={`navbar ${isNavOpen ? 'active' : ''}`}>
-        <button className="hamburger" id="hamburger" onClick={toggleNav}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div className="navbar-brand">CareerMatch</div>
-        <ul className="nav-menu">
-          <li className="nav-item">
-            <a href="/mainpage" className="nav-link active">
-              <span className="nav-icon">🏠</span>
-              <span className="nav-text">Find Jobs</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <span className="nav-icon">👤</span>
-              <span className="nav-text">Profile</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="/ResumeBuilder" className="nav-link">
-              <span className="nav-icon">📝</span>
-              <span className="nav-text">Resume Builder</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <span className="nav-icon">📊</span>
-              <span className="nav-text">Application Tracker</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <span className="nav-icon">💬</span>
-              <span className="nav-text">Messages Board</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <span className="nav-icon">❓</span>
-              <span className="nav-text">Help</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <span className="nav-icon">➜</span>
-              <span className="nav-text">Sign out</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div className="main-page">
+      {/* ✅ Replaced old navbar with imported NavbarSeeker */}
+      <NavbarSeeker />
 
       {/* Main Content */}
       <div className="Herospace">

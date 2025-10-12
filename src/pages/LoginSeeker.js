@@ -20,35 +20,28 @@ function LoginSeeker() {
     if (error) setError('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const handleSubmit = async (e) => { 
+    e.preventDefault(); 
+    setIsLoading(true); 
     setError('');
-
     try {
       const response = await fetch('https://sheetdb.io/api/v1/i05rli7aljn7d');
       const users = await response.json();
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data');
-      }
-
+      if (!response.ok) { 
+        throw new Error('Failed to fetch user data'); 
+      } 
       console.log('All users from SheetDB:', users);
 
-      const user = users.find(u => 
-        u.Email?.toLowerCase() === formData.email.toLowerCase() && 
-        u.Password === formData.password
-      );
-
-      if (user) {
-        console.log('Login successful:', user);
-        localStorage.setItem('user', JSON.stringify(user));
+      const user = users.find(u => u.Email?.toLowerCase() === formData.email.toLowerCase() &&  u.Password === formData.password);
+      if (user) { 
+        console.log('Login successful:', user); 
+        localStorage.setItem('user', JSON.stringify(user)); 
         localStorage.setItem('isAuthenticated', 'true');
-        
         alert('Login successful! Redirecting to dashboard...');
+            
         // Redirect to seeker Main Page
-        window.location.href = '/MainPage';
-      } else {
+        window.location.href = '/MainPage'; 
+      } else { 
         setError('Invalid email or password. Please try again.');
       }
     } catch (error) {
@@ -96,7 +89,7 @@ function LoginSeeker() {
     <div className="container-fluid p-0">
       <div className="row g-0 min-vh-100">
 
-        {/* Left Section */}
+        {/* Left Section with Back Button */}
         <div className="col-lg-6 left-section d-flex align-items-center justify-content-center">
           <a 
             href="/" 
@@ -111,7 +104,6 @@ function LoginSeeker() {
 
           <div className="text-center px-3">
             <div className="welcome-content mb-4">
-              <h1 className="welcome-title">Welcome to</h1> 
               <h1 className="company-name">CareerMatch</h1>
             </div>
             
@@ -123,11 +115,11 @@ function LoginSeeker() {
 
         {/* Right Section */}
         <div className="col-lg-6 right-section d-flex align-items-center justify-content-center">
-          <div className="clogin-form-wrapper">
+          <div className="login-form-wrapper">
             <div className="login-content">
-              <div className="mb-3">
-                <h2 className="login-title">Login to Your Account</h2> 
-                <p className="login-subtitle">Please enter your credentials to continue</p>
+              <div className="mb-4">
+                <h2 className="login-title">Log in</h2>
+                <p className="login-subtitle">Welcome back. Please enter your details.</p>
               </div>
 
               {error && (
@@ -137,8 +129,8 @@ function LoginSeeker() {
               )}
 
               <form onSubmit={handleSubmit}>
-                <div className="form-group mb-2">
-                  <label htmlFor="email" className="form-label">Email Address</label>
+                <div className="form-group mb-3">
+                  <label htmlFor="email" className="form-label">Email</label>
                   <input
                     type="email"
                     className="form-control"
@@ -146,12 +138,12 @@ function LoginSeeker() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Enter your email address" 
+                    placeholder="Enter your email" 
                     required
                   />
                 </div>
 
-                <div className="form-group mb-2">
+                <div className="form-group mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
                   <div className="password-input-container">
                     <input
@@ -174,13 +166,13 @@ function LoginSeeker() {
                   </div>
                 </div>
 
-                <div className="forgot-password-container mb-3">
+                <div className="forgot-password-container mb-4">
                   <button 
                     type="button"
                     className="btn-forgot-password"
                     onClick={handleForgotPassword}
                   >
-                    Forgot Password?
+                    Forgot password?
                   </button>
                 </div>
 
@@ -189,15 +181,15 @@ function LoginSeeker() {
                   className="btn-login w-100 mb-3"
                   disabled={isLoading}
                 >
-                  {isLoading ? 'Signing In...' : 'Sign In'}
+                  {isLoading ? 'Logging in...' : 'Log in'}
                 </button>
               </form>
 
               <div className="divider mb-3">
-                <span>or continue with</span>
+                <span>or</span>
               </div>
 
-              <div className="social-login-buttons mb-3">
+              <div className="social-login-buttons mb-4">
                 <button 
                   className="btn-social btn-google"
                   onClick={handleGoogleLogin}
@@ -226,7 +218,7 @@ function LoginSeeker() {
                       handleCreateAccount();
                     }}
                   >
-                    Create Account  
+                    Sign up
                   </a> 
                 </p>
               </div>

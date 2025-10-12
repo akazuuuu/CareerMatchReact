@@ -17,6 +17,7 @@ import './styles/RegisterSeeker.css';
 import './styles/MainPage.css';
 import './styles/ResumeBuilder.css';
 import './styles/navbarSeeker.css';
+import './styles/RegisterCompany.css';
 
 // Pages
 import Index from './pages/index';
@@ -26,6 +27,7 @@ import Roleselection from './pages/roleselection';
 import LoginSeeker from './pages/LoginSeeker';
 import LoginCompany from './pages/LoginCompany';
 import RegisterSeeker from './pages/RegisterSeeker';
+import RegisterCompany from './pages/RegisterCompany';
 import MainPage from './pages/MainPage';
 import ResumeBuilder from './pages/ResumeBuilder';
 

@@ -1,69 +1,78 @@
-import React, { useState } from 'react';
-import '../styles/navbarSeeker.css';
+import React, { useState } from "react";
+import "../styles/navbarSeeker.css";
+import { FaHome, FaUser, FaFileAlt, FaChartBar, FaComments, FaQuestionCircle, FaSignOutAlt } from "react-icons/fa";
 
-function NavbarSeeker() {
-  const [isOpen, setIsOpen] = useState(false);
+const NavbarSeeker = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <nav className="navbar">
-      <button 
-        className="hamburger" 
-        id="hamburger" 
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <div
+      className={`sidebar ${isExpanded ? "expanded" : ""}`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
+      {/* Header / Logo */}
+      <div className="sidebar-header">
+        <div className="brand-logo">💼</div>
+        {isExpanded && <h2 className="brand-text">CareerMatch</h2>}
+      </div>
 
-      <div className="navbar-brand">CareerMatch</div>
-
-      <ul className={`nav-menu ${isOpen ? 'open' : ''}`}>
-        <li className="nav-item">
-          <a href="/MainPage" className="nav-link active">
-            <span className="nav-icon">🏠</span>
-            <span className="nav-text">Find Jobs</span>
+      {/* Nav Links */}
+      <ul className="nav-links">
+        <li>
+          <a href="/mainpage" className="active">
+            <FaHome className="icon" />
+            {isExpanded && <span>Find Jobs</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link">
-            <span className="nav-icon">👤</span>
-            <span className="nav-text">Profile</span>
+        <li>
+          <a href="#">
+            <FaUser className="icon" />
+            {isExpanded && <span>Profile</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="/ResumeBuilder" className="nav-link">
-            <span className="nav-icon">📝</span>
-            <span className="nav-text">Resume Builder</span>
+        <li>
+          <a href="/ResumeBuilder">
+            <FaFileAlt className="icon" />
+            {isExpanded && <span>Resume Builder</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link">
-            <span className="nav-icon">📊</span>
-            <span className="nav-text">Application Tracker</span>
+        <li>
+          <a href="#">
+            <FaChartBar className="icon" />
+            {isExpanded && <span>Application Tracker</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link">
-            <span className="nav-icon">💬</span>
-            <span className="nav-text">Messages Board</span>
+        <li>
+          <a href="#">
+            <FaComments className="icon" />
+            {isExpanded && <span>Message Board</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="#" className="nav-link">
-            <span className="nav-icon">❓</span>
-            <span className="nav-text">Help</span>
+        <li>
+          <a href="/index">
+            <FaQuestionCircle className="icon" />
+            {isExpanded && <span>Help</span>}
           </a>
         </li>
-        <li className="nav-item">
-          <a href="/" className="nav-link">
-            <span className="nav-icon">➜</span>
-            <span className="nav-text">Sign out</span>
+        <li>
+          <a href="/">
+            <FaSignOutAlt className="icon" />
+            {isExpanded && <span>Sign Out</span>}
           </a>
         </li>
       </ul>
-    </nav>
+
+      {/* Bottom Controls */}
+      <div className="sidebar-footer">
+        {isExpanded && (
+          <div className="footer-text">
+            <small>© 2025 CareerMatch</small>
+          </div>
+        )}
+      </div>
+    </div>
   );
-}
+};
 
 export default NavbarSeeker;
