@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/styles.css"; // keep your CSS import
+import { Link, useLocation } from "react-router-dom"; // Added useLocation if you want active states
+import "../styles/styles.css";
 
 function NavbarComponent() {
   const [isOpen, setIsOpen] = useState(false);
+  // const location = useLocation(); // Uncomment for active logic
+  // const currentPath = location.pathname.toLowerCase();
 
-  // Toggle menu when hamburger clicked
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
 
-  // Optional: close the menu when a link is clicked (for mobile)
   const closeMenu = () => {
     setIsOpen(false);
   };
+
+  // Optional active function (uncomment if needed)
+  // const isActive = (path) => currentPath === path.toLowerCase() ? 'active' : '';
 
   return (
     <nav className="navbar">
@@ -42,13 +45,13 @@ function NavbarComponent() {
                 <Link to="/about" onClick={closeMenu}>About</Link>
               </li>
               <li>
-                <Link to="/jobsLanding" onClick={closeMenu}>Jobs</Link>
+                <Link to="/jobslanding" onClick={closeMenu}>Jobs</Link>
               </li>
               <li>
-                <Link to="#" onClick={closeMenu}>Services</Link>
+                <Link to="#" onClick={closeMenu}>Services</Link> {/* Add route if needed */}
               </li>
               <li>
-                <Link to="#" onClick={closeMenu}>Profile</Link>
+                <Link to="#" onClick={closeMenu}>Profile</Link> {/* Add route if needed */}
               </li>
               <li className="join">
                 <Link to="/roleselection" onClick={closeMenu}>Register</Link>
