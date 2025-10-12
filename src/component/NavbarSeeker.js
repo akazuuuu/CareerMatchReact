@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/navbarSeeker.css";
 import { FaHome, FaUser, FaFileAlt, FaChartBar, FaComments, FaQuestionCircle, FaSignOutAlt } from "react-icons/fa";
+import "../styles/navbarSeeker.css";
 
 const NavbarSeeker = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -11,13 +11,11 @@ const NavbarSeeker = () => {
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
-      {/* Header / Logo */}
       <div className="sidebar-header">
         <div className="brand-logo">💼</div>
         {isExpanded && <h2 className="brand-text">CareerMatch</h2>}
       </div>
 
-      {/* Nav Links */}
       <ul className="nav-links">
         <li>
           <a href="/mainpage" className="active">
@@ -32,7 +30,7 @@ const NavbarSeeker = () => {
           </a>
         </li>
         <li>
-          <a href="/ResumeBuilder">
+          <a href="/resumebuilder">
             <FaFileAlt className="icon" />
             {isExpanded && <span>Resume Builder</span>}
           </a>
@@ -63,7 +61,6 @@ const NavbarSeeker = () => {
         </li>
       </ul>
 
-      {/* Bottom Controls */}
       <div className="sidebar-footer">
         {isExpanded && (
           <div className="footer-text">

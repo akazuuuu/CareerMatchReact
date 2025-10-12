@@ -5,8 +5,6 @@
 }
 
 body, html {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -18,37 +16,34 @@ body, html {
   height: 100%;
 }
 
-/* Container and Row Optimization */
 .container-fluid.p-0 {
   padding: 0 !important;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .row.g-0 {
   margin: 0 !important;
-  height: 100%;
+  min-height: 100%;
+  display: flex;
 }
 
 .row.g-0 > [class*="col-"] {
   padding: 0 !important;
+  display: flex;
+  flex-direction: column;
 }
 
-.min-vh-100 {
-  min-height: 100vh !important;
-}
-
-/* Left Section Styles */
+/* Left Section */
 .left-section {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%) !important;
-  min-height: 100vh;
-  position: relative;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  position: relative;
+  flex: 1;
 }
 
-/* Back Button */
 .back-button-left-section {
   position: absolute;
   top: 1.5rem;
@@ -61,23 +56,21 @@ body, html {
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  text-decoration: none;
   z-index: 10;
   backdrop-filter: blur(10px);
-  text-decoration: none;
-  display: inline-block;
 }
 
 .back-button-left-section:hover {
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  text-decoration: none;
   color: #4299e1;
+  text-decoration: none;
 }
 
-/* Welcome Content */
 .welcome-content {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .welcome-title {
@@ -85,7 +78,6 @@ body, html {
   font-weight: 400;
   color: #2d3748;
   margin-bottom: 0.5rem;
-  line-height: 1.2;
 }
 
 .company-name {
@@ -94,9 +86,7 @@ body, html {
   background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-bottom: 0;
-  line-height: 1.1;
 }
 
 .illustration-container {
@@ -115,13 +105,14 @@ body, html {
 
 /* Right Section */
 .right-section {
-  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%) !important;
-  min-height: 100vh;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  flex: 1;
 }
+
 .login-form-wrapper {
   background: white;
   padding: 2rem 1.5rem;
@@ -130,12 +121,6 @@ body, html {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
-}
-
-
-/* Login Content */
-.login-content {
-  margin-top: 0.5rem;
 }
 
 .login-title {
@@ -154,7 +139,6 @@ body, html {
   line-height: 1.4;
 }
 
-/* Form Styles */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -173,7 +157,6 @@ body, html {
   border-radius: 6px;
   font-size: 0.9rem;
   width: 100%;
-  background: white;
 }
 
 .form-control:focus {
@@ -187,7 +170,6 @@ body, html {
   font-size: 0.85rem;
 }
 
-/* Password Input - NO HOVER EFFECTS */
 .password-input-container {
   position: relative;
 }
@@ -209,14 +191,8 @@ body, html {
   cursor: pointer;
   padding: 4px 8px;
   z-index: 2;
-  /* Remove all transitions and hover effects */
-  transition: none !important;
 }
 
-/* Remove ALL hover effects from password toggle */
-
-/* === Clean Forgot Password link === */
-/* Forgot Password - No Hover Effects */
 .forgot-password-container {
   text-align: right;
 }
@@ -230,17 +206,8 @@ body, html {
   cursor: pointer;
   padding: 0;
   text-decoration: none;
-  display: inline-block;
 }
 
-/* Remove hover effects from forgot password */
-.btn-forgot-password:hover {
-  color: #4299e1;
-  text-decoration: none;
-  background: none;
-}
-
-/* Login Button */
 .btn-login {
   background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
   border: none;
@@ -259,14 +226,6 @@ body, html {
   background: linear-gradient(135deg, #2c5282 0%, #2a4365 100%);
 }
 
-.btn-login:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-/* Divider */
 .divider {
   display: flex;
   align-items: center;
@@ -288,44 +247,21 @@ body, html {
   white-space: nowrap;
 }
 
-/* Social Login Buttons */
 .social-login-buttons {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centers them horizontally */
+  align-items: center;
   justify-content: center;
   gap: 0.75rem;
   margin-top: 1rem;
 }
 
 .btn-social {
-  width: 80%; /* keep them narrower for nice alignment */
+  width: 80%;
   max-width: 300px;
   text-align: center;
 }
 
-.btn-social:hover:not(:disabled) {
-  background: #f7fafc;
-  border-color: #cbd5e0;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: #4a5568;
-}
-
-.btn-social:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-.social-icon {
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* Sign Up Container - NO HOVER EFFECTS */
 .signup-container {
   text-align: center;
   padding-top: 1rem;
@@ -335,7 +271,6 @@ body, html {
 .signup-container p {
   color: #4a5568;
   font-size: 0.85rem;
-  margin: 0;
 }
 
 .btn-signup-link {
@@ -347,375 +282,45 @@ body, html {
   font-size: 0.85rem;
   padding: 0;
   text-decoration: none;
-  /* Remove all transitions and hover effects */
-  transition: none !important;
 }
 
-/* Remove ALL hover effects from signup link */
-.btn-signup-link:hover {
-  color: #4299e1 !important;
-  text-decoration: none !important;
-  background: none !important;
-}
-
-/* Error Alert */
-.alert {
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.alert-error {
-  background-color: #fed7d7;
-  color: #c53030;
-  border: 1px solid #feb2b2;
-}
-
-/* ========== RESPONSIVE DESIGN ========== */
-
-/* Large Desktop */
-@media (max-width: 1200px) {
-  .company-name {
-    font-size: 2.8rem;
-  }
-  
-  .welcome-title {
-    font-size: 1.8rem;
-  }
-}
-
-/* Tablet and Small Laptop */
-@media (max-width: 992px) {
-  .left-section, .right-section {
-    min-height: 50vh;
-    padding: 1.5rem;
-  }
-  
-  .welcome-title {
-    font-size: 1.75rem;
-  }
-  
-  .company-name {
-    font-size: 2.5rem;
-  }
-  
-  .login-form-wrapper {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-  
-  .illustration-container {
-    max-width: 300px;
-  }
-}
-
-/* Tablet */
+/* Responsive */
 @media (max-width: 768px) {
+  .row.g-0 {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+    min-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .company-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
   .welcome-title {
     font-size: 1.5rem;
   }
-  
-  .company-name {
-    font-size: 2rem;
-  }
-  
-  .login-title {
-    font-size: 1.3rem;
-  }
-  
+
   .login-form-wrapper {
+    max-width: 100%;
     padding: 1.25rem;
   }
-  
-  .back-button-left-section {
-    left: 1rem;
-    top: 1rem;
-  }
-  
+
   .social-login-buttons {
-    flex-direction: column;
+    width: 100%;
     gap: 0.5rem;
   }
-}
 
-/* Large Mobile */
-@media (max-width: 576px) {
-  .left-section, .right-section {
-    min-height: auto;
-    padding: 1rem;
-  }
-  
-  .welcome-title {
-    font-size: 1.25rem;
-  }
-  
-  .company-name {
-    font-size: 1.75rem;
-  }
-  
-  .login-title {
-    font-size: 1.2rem;
-  }
-  
-  .login-subtitle {
-    font-size: 0.8rem;
-  }
-  
-  .login-form-wrapper {
-    padding: 1.5rem;
-    margin: 0.5rem;
-  }
-  
-  .back-button-left-section {
-    left: 0.75rem;
-    top: 0.75rem;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.8rem;
-  }
-  
-  .form-control {
-    padding: 0.7rem;
-    font-size: 0.85rem;
-  }
-  
-/* === Make Password Toggle Smaller === */
-.password-input-container {
-  position: relative;
-}
-
-.password-toggle {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #4299e1;
-  font-size: 0.75rem;  /* smaller text */
-  font-weight: 500;
-  cursor: pointer;
-  padding: 2px 6px;
-}
-
-  
-  .btn-login {
-    padding: 0.7rem;
-    font-size: 0.9rem;
-  }
-  
   .btn-social {
-    padding: 0.6rem;
-    font-size: 0.8rem;
+    width: 100%;
   }
-}
 
-/* Small Mobile (iPhone SE) */
-@media (max-width: 375px) {
-  .left-section, .right-section {
-    padding: 0.75rem;
-  }
-  
-  .back-button-left-section {
-    left: 0.5rem;
-    top: 0.5rem;
-    padding: 0.35rem 0.7rem;
-    font-size: 0.75rem;
-  }
-  
-  .welcome-title {
-    font-size: 1.1rem;
-  }
-  
-  .company-name {
-    font-size: 1.6rem;
-  }
-  
-  .login-title {
-    font-size: 1.1rem;
-  }
-  
-  .login-subtitle {
-    font-size: 0.75rem;
-  }
-  
-  .login-form-wrapper {
-    padding: 1.25rem;
-    margin: 0.25rem;
-  }
-  
-  .form-control {
-    padding: 0.6rem;
-    font-size: 0.8rem;
-  }
-  
-  .form-label {
-    font-size: 0.85rem;
-  }
-  
-  .btn-login {
-    padding: 0.65rem;
-    font-size: 0.85rem;
-  }
-  
-  .btn-social {
-    padding: 0.55rem;
-    font-size: 0.75rem;
-  }
-  
   .divider span {
-    font-size: 0.75rem;
     padding: 0 0.5rem;
-  }
-  
-  .signup-container p {
-    font-size: 0.8rem;
-  }
-  
-  .alert {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.8rem;
-  }
-}
-
-/* Extra Small Mobile (iPhone SE landscape) */
-@media (max-width: 320px) {
-  .left-section, .right-section {
-    padding: 0.5rem;
-  }
-  
-  .back-button-left-section {
-    left: 0.4rem;
-    top: 0.4rem;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.7rem;
-  }
-  
-  .welcome-title {
-    font-size: 1rem;
-  }
-  
-  .company-name {
-    font-size: 1.4rem;
-  }
-  
-  .login-title {
-    font-size: 1rem;
-  }
-  
-  .login-subtitle {
-    font-size: 0.7rem;
-  }
-  
-  .login-form-wrapper {
-    padding: 1rem;
-    margin: 0.25rem;
-  }
-  
-  .form-control {
-    padding: 0.55rem;
-    font-size: 0.75rem;
-  }
-  
-  .password-input-container .form-control {
-    padding-right: 55px;
-  }
-  
-  .password-toggle {
-    font-size: 0.7rem;
-    padding: 2px 4px;
-  }
-  
-  .btn-login {
-    padding: 0.6rem;
-    font-size: 0.8rem;
-  }
-  
-  .btn-social {
-    padding: 0.5rem;
-    font-size: 0.7rem;
-  }
-  
-  .social-icon {
-    font-size: 0.8rem;
-  }
-}
-
-/* Height adjustments for very short screens */
-@media (max-height: 600px) {
-  .left-section, .right-section {
-    min-height: 100vh;
-  }
-  
-  .welcome-content {
-    margin-bottom: 1rem;
-  }
-  
-  .illustration-container {
-    max-width: 250px;
-  }
-}
-
-/* Bootstrap Overrides */
-.container-fluid.p-0 {
-  padding: 0 !important;
-}
-
-.row.g-0 {
-  margin: 0 !important;
-}
-
-.row.g-0 > [class*="col-"] {
-  padding: 0 !important;
-}
-/* Add these to your existing LoginSeeker.css */
-
-/* Ensure buttons are properly styled for navigation */
-.btn-forgot-password:active,
-.btn-social:active,
-.btn-signup-link:active {
-  opacity: 0.7;
-}
-
-/* Make sure links look clickable */
-.btn-signup-link {
-  cursor: pointer;
-}
-
-/* Loading state for social buttons */
-.btn-social:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-/* Fix for small screens (iPhone SE and short displays) */
-@media (max-width: 400px), (max-height: 700px) {
-  html, body {
-    height: auto;
-    min-height: 100%;
-    overflow-y: auto; /* allow scrolling */
-  }
-
-  .container-fluid.p-0,
-  .row.g-0,
-  .left-section,
-  .right-section {
-    min-height: auto !important;
-    height: auto !important;
-  }
-
-  .login-form-wrapper {
-    margin-bottom: 2rem; /* ensure it's not cut off */
-  }
-}
-
-/* Extra safety for very short screens */
-@media (max-height: 600px) {
-  .right-section {
-    align-items: flex-start !important;
-    padding-top: 2rem;
-  }
-
-  .login-form-wrapper {
-    margin-top: 2rem;
   }
 }

@@ -28,10 +28,14 @@ function RegisterSeeker() {
 
   const submitToSheetDB = async (data) => {
     const sheetData = {
-      "First Name": data.firstName.trim(),
-      "Last Name": data.lastName.trim(),
-      "Email": data.email.trim().toLowerCase(),
-      "Password": data.password
+      data: [
+        {
+          "First Name": data.firstName.trim(),
+          "Last Name": data.lastName.trim(),
+          "Email": data.email.trim().toLowerCase(),
+          "Password": data.password
+        }
+      ]
     };
 
     console.log('Sending to SheetDB:', sheetData);
@@ -142,7 +146,7 @@ function RegisterSeeker() {
   return (
     <div className="container-fluid p-0">
       <div className="row g-0 min-vh-100">
-        {/* Left Section - Same as before */}
+        {/* Left Section */}
         <div className="col-lg-6 left-section d-flex align-items-center justify-content-center">
           <a href="/LoginSeeker" className="back-button-left-section">
             ← Back
@@ -164,7 +168,7 @@ function RegisterSeeker() {
           </div>
         </div>
 
-        {/* Right Section - Updated to match Login style */}
+        {/* Right Section */}
         <div className="col-lg-6 right-section d-flex align-items-center justify-content-center">
           <div className="register-form-wrapper">
             <div className="register-content">
@@ -174,7 +178,7 @@ function RegisterSeeker() {
                 </div>
               )}
 
-              {/* Step 1: Basic Information - Updated to match Login style */}
+              {/* Step 1 */}
               {currentStep === 1 && (
                 <>
                   <div className="form-header text-center mb-4">
@@ -266,7 +270,7 @@ function RegisterSeeker() {
                 </>
               )}
 
-              {/* Step 2: Password and Terms - Updated to match Login style */}
+              {/* Step 2 */}
               {currentStep === 2 && (
                 <>
                   <div className="form-header text-center mb-4">

@@ -1,6 +1,8 @@
 import React from "react";
 import placeholder from "../images/placehodler.png";
 import jobsPic from "../images/jobsPic.png";
+import "../styles/styles.css";
+import "../styles/jobs.css";
 
 function JobsLanding() {
   return (

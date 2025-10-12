@@ -1,53 +1,55 @@
-.title{
-    text-align: center;
-    margin-top: 50px;
-    font-size: 40px;
-    color:#2A5298;
-    background-color:#D9EBF8;
-    margin-left: 200px;
-    margin-right: 200px;
-    font-family: 'Poppins', sans-serif;
-    background-image: linear-gradient(45deg, #7ea1e0 , #103475 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.title {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.flexContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    margin-left: 200px;
-    margin-right: 200px;
-    gap: 20px;
-    background-color:#D9EBF8;
-    padding: 20px;
+.flexContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
 .flexContent p {
-    font-size: 2rem;
+  font-size: 1.5rem;
+  max-width: 500px;
 }
 
-@media(max-width: 760px) and (min-width: 320px){
-    .title{
-        font-size: px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+#AboutPic {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
 
-    .flexContent{
-        flex-direction: column;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
+/* Mobile responsiveness */
+@media (max-width: 760px) {
+  .title {
+    font-size: 28px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 
-    .flexContent p {
-        font-size: 1.2rem;
-    }
+  .flexContent {
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+  }
 
-    #AboutPic{
-        width: 100%;
-        height: auto;
-    }
+  .flexContent p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  #AboutPic {
+    max-width: 100%;
+  }
 }

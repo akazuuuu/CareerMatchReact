@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/styles.css'; 
+import '../styles/about.css';
 import aboutPic from "../images/aboutPic.png";
 function About() {
   return (
