@@ -122,7 +122,6 @@ body, html {
   justify-content: center;
   padding: 2rem;
 }
-
 .login-form-wrapper {
   background: white;
   padding: 2rem 1.5rem;
@@ -132,6 +131,7 @@ body, html {
   width: 100%;
   margin: 0 auto;
 }
+
 
 /* Login Content */
 .login-content {
@@ -215,6 +215,7 @@ body, html {
 
 /* Remove ALL hover effects from password toggle */
 
+/* === Clean Forgot Password link === */
 /* Forgot Password - No Hover Effects */
 .forgot-password-container {
   text-align: right;
@@ -238,7 +239,6 @@ body, html {
   text-decoration: none;
   background: none;
 }
-
 
 /* Login Button */
 .btn-login {
@@ -291,28 +291,17 @@ body, html {
 /* Social Login Buttons */
 .social-login-buttons {
   display: flex;
+  flex-direction: column;
+  align-items: center; /* centers them horizontally */
+  justify-content: center;
   gap: 0.75rem;
-  justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .btn-social {
-  flex: 1;
-  padding: 0.6rem 0.75rem;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: white;
-  font-size: 0.85rem;
-  color: #4a5568;
-  text-decoration: none;
+  width: 80%; /* keep them narrower for nice alignment */
+  max-width: 300px;
   text-align: center;
-  font-family: inherit;
 }
 
 .btn-social:hover:not(:disabled) {
@@ -490,14 +479,25 @@ body, html {
     font-size: 0.85rem;
   }
   
-  .password-input-container .form-control {
-    padding-right: 60px;
-  }
-  
-  .password-toggle {
-    font-size: 0.75rem;
-    padding: 3px 6px;
-  }
+/* === Make Password Toggle Smaller === */
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #4299e1;
+  font-size: 0.75rem;  /* smaller text */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+
   
   .btn-login {
     padding: 0.7rem;
@@ -686,4 +686,36 @@ body, html {
 .btn-social:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+/* Fix for small screens (iPhone SE and short displays) */
+@media (max-width: 400px), (max-height: 700px) {
+  html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto; /* allow scrolling */
+  }
+
+  .container-fluid.p-0,
+  .row.g-0,
+  .left-section,
+  .right-section {
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .login-form-wrapper {
+    margin-bottom: 2rem; /* ensure it's not cut off */
+  }
+}
+
+/* Extra safety for very short screens */
+@media (max-height: 600px) {
+  .right-section {
+    align-items: flex-start !important;
+    padding-top: 2rem;
+  }
+
+  .login-form-wrapper {
+    margin-top: 2rem;
+  }
 }
