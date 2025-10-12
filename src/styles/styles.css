@@ -1,0 +1,752 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-image: 
+    linear-gradient(to right, rgba(61, 17, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    overflow-x: hidden;
+}
+
+html, body, #root {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+hr {
+    border: none; 
+    height: 4px;
+    background: linear-gradient(to right, #0F4C81, #4400ff);
+    margin: 30px auto;
+    width: 60%;
+}
+
+button{
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(to right, #1D4ED8, #3B82F6);
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    border-radius: 80px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+button:hover {
+    background: linear-gradient(to right, #1E40AF, #2563EB);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.desktop-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+}
+
+.desktop-bg-image {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/mainbg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -1;
+    opacity: 0.3;
+    filter: brightness(1.1) saturate(1.1);
+}
+
+
+@media (min-width: 1024px) {
+    .desktop-bg-image {
+        display: block;
+    }
+    
+    .HeroContainer {
+        position: relative;
+        z-index: 2;
+        background: transparent;
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .desktop-bg-image {
+        background-size: cover;
+        background-position: center;
+        opacity: 0.35;
+    }
+}
+
+
+.HeroContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 30px;
+    padding: 120px 20px 80px;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+.HeroContainer p{
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.6;
+    max-width: 800px;
+    color: #333;
+}
+
+.HeroContainer h1 {
+    background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    font-size: 4 rem;
+    line-height: 1.1;
+    margin: 0;
+    font-weight: 700;
+    
+    text-shadow: none;
+}
+
+#HeroButton{
+    font-size: 1.3rem;
+    padding: 1.2rem 3rem;
+    width: auto;
+    min-width: 250px;
+    margin-top: 20px;
+    border-radius: 50px;
+    position: relative;
+    z-index: 3;
+}
+
+#HeroButton:hover {
+    background: linear-gradient(to right, #1E40AF, #2563EB);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.Container2 {
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.Container2v2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 80px;
+    max-width: 1200px;
+}
+
+.box1, .box2, .box3{
+    border: 2px #1D4ED8 solid;
+    padding: 2rem 1.5rem;
+    width: 220px;
+    text-align: center;
+    border-radius: 30px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.box1:hover, .box2:hover, .box3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.box1 h1, .box2 h1, .box3 h1{
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: #3B82F6;
+    margin-bottom: 10px;
+}
+
+.box1 p, .box2 p, .box3 p{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.Container3 {
+    padding: 100px 20px;
+    margin: 0 auto;
+    max-width: 1550px;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.Container3v1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    gap: 80px;
+}
+
+.Hero2 {
+    flex: 1;
+    max-width: 500px;
+    text-align: left;
+}
+
+.Hero2 h1{
+    background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.8rem;
+    line-height: 1.3;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: left;
+    text-shadow: none;
+}
+
+.Hero2 p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 35px;
+    font-weight: 500;
+    text-align: left;
+}
+
+#btnCreate {
+    width: auto;
+    min-width: 200px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    border-radius: 50px;
+}
+
+#btnCreate:hover {
+    background: linear-gradient(to right, #1E40AF, #2563EB);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.Hero2Img {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Hero2Img img{
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.mobile-only{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.mobile-only img {
+    width: 100%;
+    height: 100%;
+    position: center top;
+    object-fit: cover;
+    opacity: 0.50;
+}
+
+@media (max-width: 1023px) {
+    .mobile-only{
+        display: block;
+    }
+}
+
+
+@media (max-width: 1023px) and (min-width: 769px) {
+    .HeroContainer {
+        padding: 100px 30px 60px;
+    }
+    
+    .HeroContainer h1 {
+        font-size: 3.8rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Container2v2 {
+        gap: 60px;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .mobile-only {
+        opacity: 0.08;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .HeroContainer {
+        padding: 100px 20px 60px;
+        min-height: 80vh;
+    }
+    
+    .HeroContainer h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    
+    #HeroButton {
+        min-width: 200px;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .Container2 {
+        padding: 60px 20px;
+        background: white;
+    }
+    
+    .Container2v2 {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 200px;
+        height: 200px;
+        background: white;
+    }
+    
+    .Container3 {
+        padding: 60px 20px;
+        background: white;
+    }
+    
+    .Container3v1 {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .Hero2 {
+        text-align: center;
+        max-width: 100%;
+        order: 2;
+    }
+    
+    .Hero2 h1 {
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Hero2 p {
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+    
+    .Hero2Img {
+        max-width: 100%;
+        order: 1;
+    }
+    
+    .Hero2Img img {
+        max-width: 350px;
+    }
+    
+    #btnCreate {
+        min-width: 180px;
+        font-size: 1rem;
+    }
+    
+
+    .desktop-bg-container {
+        display: none;
+    }
+    
+    .mobile-only {
+        opacity: 0.1;
+    }
+}
+
+/* Mobile Devices (480px to 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .HeroContainer h1 {
+        font-size: 2.8rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 1.1rem;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 180px;
+        height: 180px;
+        padding: 1.5rem;
+    }
+    
+    .mobile-only {
+        opacity: 0.12;
+    }
+}
+
+/* Small Mobile Devices (480px and below) - INCLUDES 375px */
+@media (max-width: 480px) {
+    .HeroContainer {
+        padding: 80px 15px 40px;
+        min-height: 70vh;
+        gap: 25px;
+    }
+    
+    .HeroContainer h1 {
+        font-size: 2.3rem;
+        line-height: 1.2;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+    
+    #HeroButton {
+        min-width: 170px;
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+    
+    .Container2 {
+        padding: 40px 15px;
+    }
+    
+    .Container2v2 {
+        gap: 30px;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 160px;
+        height: 160px;
+        padding: 1.2rem;
+    }
+    
+    .box1 h1, .box2 h1, .box3 h1 {
+        font-size: 2.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .box1 p, .box2 p, .box3 p {
+        font-size: 0.95rem;
+    }
+    
+    .Container3 {
+        padding: 40px 15px;
+    }
+    
+    .Container3v1 {
+        gap: 40px;
+    }
+    
+    .Hero2 h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Hero2 p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+    
+    .Hero2Img img {
+        max-width: 280px;
+    }
+    
+    #btnCreate {
+        min-width: 160px;
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+    }
+    
+    .mobile-only {
+        opacity: 0.15;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .HeroContainer {
+        padding: 70px 12px 35px;
+        min-height: 65vh;
+        gap: 20px;
+    }
+    
+    .HeroContainer h1 {
+        font-size: 2rem;
+        line-height: 1.1;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding: 0 5px;
+    }
+    
+    #HeroButton {
+        min-width: 160px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .Container2 {
+        padding: 35px 12px;
+    }
+    
+    .Container2v2 {
+        gap: 25px;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 150px;
+        height: 150px;
+        padding: 1rem;
+    }
+    
+    .box1 h1, .box2 h1, .box3 h1 {
+        font-size: 2.2rem;
+        margin-bottom: 5px;
+    }
+    
+    .box1 p, .box2 p, .box3 p {
+        font-size: 0.9rem;
+    }
+    
+    .Container3 {
+        padding: 35px 12px;
+    }
+    
+    .Container3v1 {
+        gap: 35px;
+    }
+    
+    .Hero2 h1 {
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Hero2 p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+    
+    .Hero2Img img {
+        max-width: 250px;
+    }
+    
+    #btnCreate {
+        min-width: 150px;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .mobile-only {
+        opacity: 0.18;
+    }
+}
+
+/* Ultra-small devices (320px and below) */
+@media (max-width: 320px) {
+    .HeroContainer h1 {
+        font-size: 1.8rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 0.85rem;
+    }
+    
+    #HeroButton {
+        min-width: 140px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .Hero2 h1 {
+        font-size: 1.4rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Hero2 p {
+        font-size: 0.85rem;
+    }
+    
+    .mobile-only {
+        opacity: 0.2;
+    }
+}
+
+@media (min-width: 1200px) {
+    .HeroContainer {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .Container3v1 {
+        max-width: 1200px;
+    }
+    
+    .HeroContainer h1 {
+        font-size: 5rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .HeroContainer p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .HeroContainer h1 {
+        font-size: 5.5rem;
+        background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: none;
+    }
+    
+    .Container2v2 {
+        gap: 100px;
+    }
+    
+    .box1, .box2, .box3 {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .box1 h1, .box2 h1, .box3 h1 {
+        font-size: 3.5rem;
+    }
+}
