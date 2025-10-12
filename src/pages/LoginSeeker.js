@@ -123,7 +123,7 @@ function LoginSeeker() {
 
         {/* Right Section */}
         <div className="col-lg-6 right-section d-flex align-items-center justify-content-center">
-          <div className="login-form-wrapper">
+          <div className="clogin-form-wrapper">
             <div className="login-content">
               <div className="mb-3">
                 <h2 className="login-title">Login to Your Account</h2> 
