@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/LoginSeeker.css";
 import { FaUser, FaLock, FaGoogle, FaFacebookF, FaArrowLeft } from "react-icons/fa";
-import backgroundImg from "../images/mainbg.jpg"; // Replace with your image
+import backgroundImg from "../images/mainbg.jpg";
 
 const LoginSeeker = () => {
   const [formData, setFormData] = useState({
@@ -56,8 +56,13 @@ const LoginSeeker = () => {
         <h3 className="login-heading">Login</h3>
 
         <form onSubmit={handleSubmit} className="login-form">
+          {/* Email Input */}
           <div className="input-group">
-            <FaUser className="input-icon" />
+            <FaUser
+              className={`input-icon ${
+                formData.email.length > 0 ? "hidden" : ""
+              }`}
+            />
             <input
               type="email"
               name="email"
@@ -68,8 +73,13 @@ const LoginSeeker = () => {
             />
           </div>
 
+          {/* Password Input */}
           <div className="input-group">
-            <FaLock className="input-icon" />
+            <FaLock
+              className={`input-icon ${
+                formData.password.length > 0 ? "hidden" : ""
+              }`}
+            />
             <input
               type="password"
               name="password"

@@ -90,27 +90,23 @@ body, html {
   margin-bottom: 1rem;
 }
 
+/* Ensure inputs are fully clickable */
 .input-group input {
   width: 100%;
   padding: 0.7rem 2.5rem;
   border: 1px solid #2A5298;
   border-radius: 25px;
-  background: rgba(255, 255, 255, 0.95);
-  color: #2A5298;
+  background: #fff;
+  color: #000; /* 🔥 Black text for visibility */
   font-size: 0.95rem;
-  font-weight: 500;
   outline: none;
-  z-index: 1;
   position: relative;
-  transform: translateZ(0); /* Fix invisible text bug on Chrome */
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  z-index: 2;
+  transition: all 0.3s ease;
 }
 
-.input-group input::placeholder {
-  color: #6c7a99;
-}
 
+Icon styling */
 .input-icon {
   position: absolute;
   left: 14px;
@@ -118,14 +114,30 @@ body, html {
   transform: translateY(-50%);
   color: #2A5298;
   font-size: 1rem;
-  z-index: 2;
   pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1; /* behind input */
+}
+
+/* Hide icon when typing */
+.input-icon.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* Placeholder text styling */
+.input-group input::placeholder {
+  color: #6c7a99; /* Softer gray for placeholders */
+  opacity: 1;
 }
 
 /* Highlight input when typing */
 .input-group input:focus {
-  border-color: #1f3e7a;
+   border-color: #1f3e7a;
   box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+  background-color: #fff;
+  color: #000; /* Ensure black text stays consistent */
 }
 
 /* Forgot password */
