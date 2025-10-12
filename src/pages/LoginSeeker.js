@@ -1,159 +1,107 @@
-import React, { useState } from 'react';
-import '../styles/LoginSeeker.css';
-import workImage from "../images/work.png";
+import React, { useState } from "react";
+import "../styles/LoginSeeker.css";
+import { FaUser, FaLock, FaGoogle, FaFacebookF, FaArrowLeft } from "react-icons/fa";
+import backgroundImg from "../images/mainbg.jpg"; // Replace with your image
 
-function LoginSeeker() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+const LoginSeeker = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (error) setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
+
     try {
-      const response = await fetch('https://sheetdb.io/api/v1/i05rli7aljn7d');
-      const users = await response.json();
-      if (!response.ok) throw new Error('Failed to fetch user data');
+      const response = await fetch("https://sheetdb.io/api/v1/i05rli7aljn7d", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data: [formData] }),
+      });
 
-      const user = users.find(
-        u => u.Email?.toLowerCase() === formData.email.toLowerCase() &&
-             u.Password === formData.password
-      );
-
-      if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('isAuthenticated', 'true');
-        alert('Login successful! Redirecting to dashboard...');
-        window.location.href = '/MainPage';
+      if (response.ok) {
+        alert("Login data submitted successfully!");
+        setFormData({ email: "", password: "" });
       } else {
-        setError('Invalid email or password. Please try again.');
+        alert("Failed to submit data. Please try again.");
       }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError('Failed to login. Please check your connection and try again.');
-    } finally {
-      setIsLoading(false);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting data.");
     }
   };
 
-  const handleBackButton = () => window.location.href = '/';
-  const handleForgotPassword = () => window.location.href = '/';
-  const handleGoogleLogin = () => window.location.href = '/';
-  const handleFacebookLogin = () => window.location.href = '/';
-  const handleCreateAccount = () => window.location.href = '/RegisterSeeker';
+  const handleGoogleLogin = () => alert("Google Login Clicked!");
+  const handleFacebookLogin = () => alert("Facebook Login Clicked!");
+  const handleBack = () => window.history.back();
 
   return (
-    <div className="login-page-container">
-      <div className="login-row">
-        {/* Left Section */}
-        <div className="left-section">
-          <a 
-            href="/" 
-            className="back-button-left-section"
-            onClick={(e) => { e.preventDefault(); handleBackButton(); }}
-          > 
-            ← Back 
-          </a>
+    <div
+      className="loginseeker-container"
+      style={{ backgroundImage: `url(${backgroundImg})` }}
+    >
+      {/* Back Button */}
+      <button className="back-button" onClick={handleBack}>
+        <FaArrowLeft /> Back
+      </button>
 
-          <div className="text-center">
-            <h1 className="company-name">CareerMatch</h1>
-            <div className="illustration-container">
-              <img src={workImage} alt="Career Matching Illustration" className="main-illustration"/>
-            </div>
+      <div className="loginseeker-card">
+        <h2 className="loginseeker-title">Welcome to CareerMatch</h2>
+        <h3 className="login-heading">Login</h3>
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <FaUser className="input-icon" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Username or Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
-        </div>
 
-        {/* Right Section */}
-        <div className="right-section">
-          <div className="login-form-wrapper">
-            <h2 className="login-title mb-2">Log in</h2>
-            <p className="login-subtitle mb-4">Welcome back. Please enter your details.</p>
-
-            {error && <div className="alert-error mb-3">{error}</div>}
-
-            <form onSubmit={handleSubmit}>
-              <div className="form-group mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-control"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-
-              <div className="form-group mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
-                <div className="password-input-container">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    name="password"
-                    className="form-control"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <button 
-                    type="button" 
-                    className="password-toggle"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? 'Hide' : 'Show'}
-                  </button>
-                </div>
-              </div>
-
-              <div className="forgot-password-container mb-4">
-                <button type="button" className="btn-forgot-password" onClick={handleForgotPassword}>
-                  Forgot password?
-                </button>
-              </div>
-
-              <button type="submit" className="btn-login w-100 mb-3" disabled={isLoading}>
-                {isLoading ? 'Logging in...' : 'Log in'}
-              </button>
-            </form>
-
-            <div className="divider mb-3"><span>or</span></div>
-
-            <div className="social-login-buttons mb-4">
-              <button className="btn-social btn-google" onClick={handleGoogleLogin} disabled={isLoading}>
-                <span className="social-icon">G</span> Google
-              </button>
-              <button className="btn-social btn-facebook" onClick={handleFacebookLogin} disabled={isLoading}>
-                <span className="social-icon">f</span> Facebook
-              </button>
-            </div>
-
-            <div className="signup-container">
-              <p>
-                Don't have an account?{' '}
-                <a href="/RegisterSeeker" className="btn-signup-link" onClick={(e) => { e.preventDefault(); handleCreateAccount(); }}>
-                  Sign up
-                </a>
-              </p>
-            </div>
+          <div className="input-group">
+            <FaLock className="input-icon" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
           </div>
-        </div>
+
+          <a href="#" className="forgot-password">Forgot password?</a>
+
+          <button type="submit" className="login-btn">Login</button>
+
+          <div className="divider"><span>Or Continue With</span></div>
+
+          <div className="social-login">
+            <button type="button" className="social-btn google" onClick={handleGoogleLogin}>
+              <FaGoogle className="social-icon" /> Google
+            </button>
+            <button type="button" className="social-btn facebook" onClick={handleFacebookLogin}>
+              <FaFacebookF className="social-icon" /> Facebook
+            </button>
+          </div>
+
+          <p className="register-text">
+            Don’t have an account? <a href="/RegisterSeeker">Register</a>
+          </p>
+        </form>
       </div>
-
-      {/* Footer */}
-      
     </div>
   );
-}
+};
 
 export default LoginSeeker;
