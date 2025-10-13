@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import { db } from '../pages/Firebase';
-import NavbarSeeker from '../component/NavbarSeeker';
+import { collection, getDocs } from 'firebase/firestore';
+import NavbarCompany from '../component/NavbarCompany';
 import '../styles/MainPage.css';
 
 const SWIPE_THRESHOLD = 120;
 
-const MainPage = () => {
-  const [jobs, setJobs] = useState([]);
+const ViewApplicants = () => {
+  const [applicants, setApplicants] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const startXRef = useRef(0);
@@ -17,22 +17,21 @@ const MainPage = () => {
   const cardStackRef = useRef(null);
 
   useEffect(() => {
-    const loadJobs = async () => {
+    const fetchApplicants = async () => {
       try {
-        const q = query(collection(db, 'jobPosts'), orderBy('datePosted', 'desc'));
-        const snapshot = await getDocs(q);
-        const jobsData = snapshot.docs.map((doc) => doc.data());
-        setJobs(jobsData);
+        const snapshot = await getDocs(collection(db, 'resumes'));
+        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setApplicants(data);
       } catch (err) {
-        console.error('Error loading jobs:', err);
+        console.error('Error fetching applicants:', err);
       }
     };
-    loadJobs();
+    fetchApplicants();
   }, []);
 
   useEffect(() => {
     updateCardPositions();
-  }, [currentIndex, jobs]);
+  }, [currentIndex, applicants]);
 
   const updateCardPositions = () => {
     const cards = document.querySelectorAll('.job-card');
@@ -75,6 +74,7 @@ const MainPage = () => {
     const rotation = diff / 20;
     card.style.transition = 'none';
     card.style.transform = `translateX(${diff}px) rotate(${rotation}deg)`;
+
     const accept = card.querySelector('.swipe-indicator.accept');
     const decline = card.querySelector('.swipe-indicator.decline');
     if (accept) accept.style.opacity = diff > 0 ? Math.min(diff / 150, 1) : 0;
@@ -90,38 +90,32 @@ const MainPage = () => {
     const diff = currentXRef.current - startXRef.current;
     card.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
 
-    const isLastCard = currentIndex === jobs.length - 1;
-    const effectiveThreshold = isLastCard ? 50 : SWIPE_THRESHOLD;
-
-    if (diff > effectiveThreshold) {
-      card.style.transform = `translateX(1200px) rotate(30deg)`;
+    if (diff > SWIPE_THRESHOLD) {
+      card.style.transform = 'translateX(1200px) rotate(30deg)';
       card.style.opacity = '0';
       setTimeout(() => setCurrentIndex((p) => p + 1), 300);
-    } else if (diff < -effectiveThreshold) {
-      card.style.transform = `translateX(-1200px) rotate(-30deg)`;
+    } else if (diff < -SWIPE_THRESHOLD) {
+      card.style.transform = 'translateX(-1200px) rotate(-30deg)';
       card.style.opacity = '0';
       setTimeout(() => setCurrentIndex((p) => p + 1), 300);
     } else {
-      card.style.transform = `translateX(0px) rotate(0deg)`;
-      const a = card.querySelector('.swipe-indicator.accept');
-      const d = card.querySelector('.swipe-indicator.decline');
-      if (a) a.style.opacity = 0;
-      if (d) d.style.opacity = 0;
+      card.style.transform = 'translateX(0) rotate(0)';
+      const accept = card.querySelector('.swipe-indicator.accept');
+      const decline = card.querySelector('.swipe-indicator.decline');
+      if (accept) accept.style.opacity = 0;
+      if (decline) decline.style.opacity = 0;
     }
 
     setTimeout(() => {
-      if (activeCardRef.current) {
-        activeCardRef.current.style.transition = '';
-      }
+      if (activeCardRef.current) activeCardRef.current.style.transition = '';
       activeCardRef.current = null;
     }, 350);
   };
 
   const handlePointerDown = (e, index) => {
     if (index !== currentIndex) return;
-    const card = e.currentTarget;
     draggingRef.current = true;
-    activeCardRef.current = card;
+    activeCardRef.current = e.currentTarget;
     startXRef.current = e.clientX;
     currentXRef.current = e.clientX;
 
@@ -136,7 +130,6 @@ const MainPage = () => {
     window.addEventListener('pointerup', upHandler);
   };
 
-  // ✅ Touch event support for mobile (iPhone / Android)
   const handleTouchStart = (e, index) => {
     if (index !== currentIndex) return;
     draggingRef.current = true;
@@ -151,18 +144,14 @@ const MainPage = () => {
     e.preventDefault();
   };
 
-  const handleTouchEnd = () => {
-    endSwipe();
-  };
+  const handleTouchEnd = () => endSwipe();
 
   const animateSwipe = (direction) => {
     const card = document.querySelector(`[data-index="${currentIndex}"]`);
     if (!card) return;
     card.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
     card.style.transform =
-      direction === 'right'
-        ? 'translateX(1200px) rotate(30deg)'
-        : 'translateX(-1200px) rotate(-30deg)';
+      direction === 'right' ? 'translateX(1200px) rotate(30deg)' : 'translateX(-1200px) rotate(-30deg)';
     card.style.opacity = '0';
     setTimeout(() => setCurrentIndex((p) => p + 1), 300);
   };
@@ -170,14 +159,13 @@ const MainPage = () => {
   const swipeLeft = () => animateSwipe('left');
   const swipeRight = () => animateSwipe('right');
 
-  const renderCard = (job, index) => {
-    const logo = job?.logo
-      ? `<img src="${job.logo}" alt="Logo" style="width:100%;height:100%;border-radius:16px;object-fit:cover;">`
-      : job?.company?.substring(0, 2).toUpperCase() || 'CM';
-
+  const renderCard = (applicant, index) => {
+    const initials = applicant.fullName
+      ? applicant.fullName.split(' ').map((n) => n[0]).join('')
+      : 'NA';
     return (
       <div
-        key={index}
+        key={applicant.id}
         className="job-card"
         data-index={index}
         onPointerDown={(e) => handlePointerDown(e, index)}
@@ -187,19 +175,25 @@ const MainPage = () => {
         role="button"
         tabIndex={0}
       >
-        <div className="company-logo" dangerouslySetInnerHTML={{ __html: logo }} />
-        <div className="job-title">{job.title}</div>
-        <div className="company-name">{job.company}</div>
+        <div className="company-logo">{initials}</div>
+        <div className="job-title">{applicant.fullName}</div>
+        <div className="company-name">{applicant.email}</div>
+
         <div className="job-details">
-          <div className="detail-item"><span>📍</span> {job.location}</div>
-          <div className="detail-item"><span>💼</span> {job.type}</div>
-          <div className="detail-item"><span>🎓</span> {job.degree || 'Any'}</div>
-          <div className="detail-item"><span>🕒</span> {job.experience || 'Not specified'}</div>
-          <div className="detail-item"><span>⚡</span> {job.employmentLevel || 'Not specified'}</div>
-          <div className="detail-item"><span>🛠️</span> {job.skills || 'Not specified'}</div>
+          <div className="detail-item"><span>👤</span> {applicant.aboutMe}</div>
+          <div className="detail-item"><span>🎂</span> {applicant.birthday}</div>
+          <div className="detail-item"><span>🏙️</span> {applicant.city}</div>
+          <div className="detail-item"><span>🎓</span> {applicant.education}</div>
+          <div className="detail-item"><span>⚧</span> {applicant.gender}</div>
+          <div className="detail-item"><span>💼</span> {applicant.jobPreferences}</div>
+          <div className="detail-item"><span>🗣️</span> {applicant.languages}</div>
+          <div className="detail-item"><span>💍</span> {applicant.maritalStatus}</div>
+          <div className="detail-item"><span>📞</span> {applicant.phoneNumber}</div>
+          <div className="detail-item"><span>🛠️</span> {applicant.skills}</div>
+          <div className="detail-item"><span>🏢</span> {applicant.workExperience}</div>
+          <div className="detail-item"><span>⏰</span> {applicant.submittedAt ? new Date(applicant.submittedAt.seconds * 1000).toLocaleString() : 'N/A'}</div>
         </div>
-        <div className="salary">{job.salary || 'Not specified'}</div>
-        <div className="job-description">{job.description || ''}</div>
+
         <div className="swipe-indicator accept">APPLY</div>
         <div className="swipe-indicator decline">DECLINE</div>
       </div>
@@ -208,20 +202,18 @@ const MainPage = () => {
 
   return (
     <div className="main-page">
-      <NavbarSeeker />
+      <NavbarCompany />
       <div className="Herospace">
         <div className="swipe-container">
-          <div className="header">
-            <p>Swipe right to apply, left to decline.</p>
-          </div>
+          <div className="header"><p>Swipe right to accept, left to decline.</p></div>
 
           <div className="card-stack" ref={cardStackRef}>
-            {jobs.length === 0 ? (
-              <p>Loading jobs...</p>
-            ) : currentIndex >= jobs.length ? (
-              <div className="no-more">No more jobs to review!</div>
+            {applicants.length === 0 ? (
+              <p>Loading applicants...</p>
+            ) : currentIndex >= applicants.length ? (
+              <div className="no-more">No more applicants to review!</div>
             ) : (
-              jobs.map((job, idx) => renderCard(job, idx))
+              applicants.map((app, idx) => renderCard(app, idx))
             )}
           </div>
 
@@ -231,10 +223,8 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-      <footer className="footer">...</footer>
     </div>
   );
 };
 
-export default MainPage;
-  
+export default ViewApplicants;

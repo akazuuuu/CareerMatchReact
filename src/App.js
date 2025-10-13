@@ -19,19 +19,26 @@ import RegisterCompany from "./pages/RegisterCompany";
 import MainPage from "./pages/MainPage";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import JobPost from "./pages/JobPost";
+import ViewApplicants from "./pages/ViewApplicants"; 
 
 function AppContent() {
   const location = useLocation();
   const path = location.pathname.toLowerCase();
 
   const seekerNavbarPaths = ["/mainpage", "/resumebuilder"];
-  const companyNavbarPaths = ["/jobpost"];
-  const hideNavbarPaths = ["/loginseeker", "/logincompany", "/registerseeker", "/registercompany"];
-  const hideFooterPaths = ["/mainpage", "/resumebuilder", "/jobpost"];
+  const companyNavbarPaths = ["/jobpost", "/viewapplicants"]; //  Added ViewApplicants here
+  const hideNavbarPaths = [
+    "/loginseeker",
+    "/logincompany",
+    "/registerseeker",
+    "/registercompany",
+  ];
+  const hideFooterPaths = ["/mainpage", "/resumebuilder", "/jobpost", "/viewapplicants"]; //  Added ViewApplicants
 
   const showSeekerNavbar = seekerNavbarPaths.includes(path);
   const showCompanyNavbar = companyNavbarPaths.includes(path);
-  const showDefaultNavbar = !hideNavbarPaths.includes(path) && !showSeekerNavbar && !showCompanyNavbar;
+  const showDefaultNavbar =
+    !hideNavbarPaths.includes(path) && !showSeekerNavbar && !showCompanyNavbar;
   const showFooter = !hideFooterPaths.includes(path);
 
   return (
@@ -57,6 +64,7 @@ function AppContent() {
           <Route path="/mainpage" element={<MainPage />} />
           <Route path="/resumebuilder" element={<ResumeBuilder />} />
           <Route path="/jobpost" element={<JobPost />} />
+          <Route path="/viewapplicants" element={<ViewApplicants />} /> {/*  NEW ROUTE */}
         </Routes>
 
         {/* Footer */}
