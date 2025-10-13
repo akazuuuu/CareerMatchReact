@@ -47,21 +47,9 @@ const NavbarCompany = () => {
               {isExpanded && <span>Job Post</span>}
             </a>
           </li>
-          <li>
-            <a href="/analytics">
-              <FaChartBar className="icon" />
-              {isExpanded && <span>Analytics</span>}
-            </a>
-          </li>
-          <li>
-            <a href="/messages">
-              <FaComments className="icon" />
-              {isExpanded && <span>Notification</span>}
-            </a>
-          </li>
 
           <li>
-            <a href="/">
+            <a href="/index">
               <FaSignOutAlt className="icon" />
               {isExpanded && <span>Sign Out</span>}
             </a>

@@ -117,27 +117,31 @@ button:active {
     z-index: 2;
 }
 
-.HeroContainer p{
-    font-size: 1.3rem;
-    font-weight: 500;
-    text-align: center;
-    line-height: 1.6;
-    max-width: 800px;
-    color: #333;
+.HeroContainer h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #ffffff; /* pure white text */
+  text-shadow: 
+    0 4px 25px rgba(0, 0, 0, 0.6),
+    0 0 10px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  line-height: 1.1;
+
+  /* Ensure nothing overrides white color */
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
-.HeroContainer h1 {
-    background: linear-gradient(to right, #1D4ED8 0%, #3B82F6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-align: center;
-    font-size: 4 rem;
-    line-height: 1.1;
-    margin: 0;
-    font-weight: 700;
-    
-    text-shadow: none;
+.HeroContainer p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 800px;
+  color: #f0f0f0; /* 🩵 Light text color for contrast */
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 #HeroButton{
@@ -265,9 +269,11 @@ button:active {
     font-size: 1.1rem;
     margin-top: 10px;
     border-radius: 50px;
+    color: white;
 }
 
 #btnCreate:hover {
+    text-decoration: underline !important;
     background: linear-gradient(to right, #1E40AF, #2563EB);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
@@ -658,6 +664,36 @@ button:active {
         opacity: 0.18;
     }
 }
+.desktop-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+}
+
+/* 🎥 Video Background */
+.desktop-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.3; /* Same as old background image */
+  filter: brightness(1.1) saturate(1.1);
+}
+
+/* Only show video on desktop */
+@media (max-width: 1023px) {
+  .desktop-bg-container {
+    display: none;
+  }
+}
+
 
 /* Ultra-small devices (320px and below) */
 @media (max-width: 320px) {

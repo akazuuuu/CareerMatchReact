@@ -55,12 +55,8 @@ const NavbarSeeker = () => {
               {isExpanded && <span>Resume Builder</span>}
             </a>
           </li>
-          <li>
-            <a href="/applicationTracker">
-              <FaChartBar className="icon" />
-              {isExpanded && <span>Application Tracker</span>}
-            </a>
-          </li>
+          
+           
         
           <li>
             <a href="/index">
