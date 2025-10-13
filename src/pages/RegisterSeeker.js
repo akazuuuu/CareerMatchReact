@@ -22,7 +22,7 @@ const RegisterSeeker = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirm_password) {
-      alert("Passwords do not match!");
+      alert("⚠️ Passwords do not match!");
       return;
     }
 
@@ -30,11 +30,23 @@ const RegisterSeeker = () => {
       const response = await fetch("https://sheetdb.io/api/v1/i05rli7aljn7d", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: [formData] }),
+        body: JSON.stringify({
+          data: [
+            {
+              "First Name": formData.first_name,
+              "Last Name": formData.last_name,
+              Email: formData.email,
+              Password: formData.password,
+            },
+          ],
+        }),
       });
 
-      if (response.ok) {
-        alert("Registration successful!");
+      const result = await response.json();
+      console.log("API Response:", result);
+
+      if (response.ok && result.created) {
+        alert("✅ Registration successful!");
         setFormData({
           first_name: "",
           last_name: "",
@@ -43,11 +55,11 @@ const RegisterSeeker = () => {
           confirm_password: "",
         });
       } else {
-        alert("Failed to register. Try again.");
+        alert("❌ Failed to register. Please check your SheetDB setup.");
       }
     } catch (error) {
-      console.error(error);
-      alert("Error connecting to the API.");
+      console.error("API Error:", error);
+      alert("⚠️ Error connecting to the API.");
     }
   };
 
@@ -57,18 +69,19 @@ const RegisterSeeker = () => {
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
       {/* Back Button */}
-      <button className="back-button" onClick={handleBack}>
+      <button className="register-back-button" onClick={handleBack}>
         <FaArrowLeft /> Back
       </button>
 
+      {/* Registration Card */}
       <div className="registerseeker-card">
         <h2 className="registerseeker-title">Welcome to CareerMatch</h2>
-        <h3 className="register-heading">Register</h3>
+        <h3 className="registerseeker-heading">Create Your Account</h3>
 
         <form onSubmit={handleSubmit} className="register-form">
           {/* First Name */}
-          <div className="input-group">
-            <FaUser className="input-icon" />
+          <div className="register-input-group">
+            <FaUser className="register-input-icon" />
             <input
               type="text"
               name="first_name"
@@ -80,8 +93,8 @@ const RegisterSeeker = () => {
           </div>
 
           {/* Last Name */}
-          <div className="input-group">
-            <FaUser className="input-icon" />
+          <div className="register-input-group">
+            <FaUser className="register-input-icon" />
             <input
               type="text"
               name="last_name"
@@ -93,8 +106,8 @@ const RegisterSeeker = () => {
           </div>
 
           {/* Email */}
-          <div className="input-group">
-            <FaEnvelope className="input-icon" />
+          <div className="register-input-group">
+            <FaEnvelope className="register-input-icon" />
             <input
               type="email"
               name="email"
@@ -106,8 +119,8 @@ const RegisterSeeker = () => {
           </div>
 
           {/* Password */}
-          <div className="input-group">
-            <FaLock className="input-icon" />
+          <div className="register-input-group">
+            <FaLock className="register-input-icon" />
             <input
               type="password"
               name="password"
@@ -119,8 +132,8 @@ const RegisterSeeker = () => {
           </div>
 
           {/* Confirm Password */}
-          <div className="input-group">
-            <FaLock className="input-icon" />
+          <div className="register-input-group">
+            <FaLock className="register-input-icon" />
             <input
               type="password"
               name="confirm_password"
@@ -131,11 +144,13 @@ const RegisterSeeker = () => {
             />
           </div>
 
+          {/* Submit Button */}
           <button type="submit" className="register-btn">
             Register
           </button>
 
-          <p className="login-text">
+          {/* Login Redirect */}
+          <p className="register-login-text">
             Already have an account? <a href="/login">Login</a>
           </p>
         </form>

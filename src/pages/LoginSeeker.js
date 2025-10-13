@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import "../styles/LoginSeeker.css";
-import { FaUser, FaLock, FaGoogle, FaFacebookF, FaArrowLeft } from "react-icons/fa";
+import {
+  FaUser,
+  FaLock,
+  FaGoogle,
+  FaFacebookF,
+  FaArrowLeft,
+} from "react-icons/fa";
 import backgroundImg from "../images/mainbg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const LoginSeeker = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,23 +26,30 @@ const LoginSeeker = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://sheetdb.io/api/v1/i05rli7aljn7d", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: [formData] }),
-      });
+      // ✅ 1. Fetch all users from SheetDB
+      const response = await fetch("https://sheetdb.io/api/v1/i05rli7aljn7d");
+      const data = await response.json();
 
-      if (response.ok) {
-        alert("Login data submitted successfully!");
+      console.log("SheetDB Data:", data); // for debugging
+
+      // ✅ 2. Check if email and password match any record
+      const user = data.find(
+        (u) =>
+          (u.Email === formData.email || u.email === formData.email) &&
+          (u.Password === formData.password || u.password === formData.password)
+      );
+
+      // ✅ 3. Validate login
+      if (user) {
+        alert("✅ Login successful!");
         setFormData({ email: "", password: "" });
+        navigate("/MainPage"); // Redirect to main page
       } else {
-        alert("Failed to submit data. Please try again.");
+        alert("❌ Invalid email or password!");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting data.");
+      alert("⚠️ Error connecting to the database.");
     }
   };
 
@@ -46,7 +62,7 @@ const LoginSeeker = () => {
       className="loginseeker-container"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      {/* Back Button */}
+      {/* 🔙 Back Button */}
       <button className="back-button" onClick={handleBack}>
         <FaArrowLeft /> Back
       </button>
@@ -55,13 +71,11 @@ const LoginSeeker = () => {
         <h2 className="loginseeker-title">Welcome to CareerMatch</h2>
         <h3 className="login-heading">Login</h3>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          {/* Email Input */}
-          <div className="input-group">
+        <form onSubmit={handleSubmit} className="auth-form">
+          {/* Email Field */}
+          <div className="field-wrapper">
             <FaUser
-              className={`input-icon ${
-                formData.email.length > 0 ? "hidden" : ""
-              }`}
+              className={`field-icon ${formData.email ? "hidden" : ""}`}
             />
             <input
               type="email"
@@ -73,12 +87,10 @@ const LoginSeeker = () => {
             />
           </div>
 
-          {/* Password Input */}
-          <div className="input-group">
+          {/* Password Field */}
+          <div className="field-wrapper">
             <FaLock
-              className={`input-icon ${
-                formData.password.length > 0 ? "hidden" : ""
-              }`}
+              className={`field-icon ${formData.password ? "hidden" : ""}`}
             />
             <input
               type="password"
@@ -90,22 +102,36 @@ const LoginSeeker = () => {
             />
           </div>
 
-          <a href="#" className="forgot-password">Forgot password?</a>
+          <a href="#" className="forgot-link">
+            Forgot password?
+          </a>
 
-          <button type="submit" className="login-btn">Login</button>
+          <button type="submit" className="auth-btn">
+            Login
+          </button>
 
-          <div className="divider"><span>Or Continue With</span></div>
+          <div className="divider">
+            <span>Or Continue With</span>
+          </div>
 
-          <div className="social-login">
-            <button type="button" className="social-btn google" onClick={handleGoogleLogin}>
+          <div className="auth-social">
+            <button
+              type="button"
+              className="auth-social-btn google"
+              onClick={handleGoogleLogin}
+            >
               <FaGoogle className="social-icon" /> Google
             </button>
-            <button type="button" className="social-btn facebook" onClick={handleFacebookLogin}>
+            <button
+              type="button"
+              className="auth-social-btn facebook"
+              onClick={handleFacebookLogin}
+            >
               <FaFacebookF className="social-icon" /> Facebook
             </button>
           </div>
 
-          <p className="register-text">
+          <p className="registert">
             Don’t have an account? <a href="/RegisterSeeker">Register</a>
           </p>
         </form>

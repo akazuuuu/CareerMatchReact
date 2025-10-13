@@ -54,7 +54,7 @@ function Index() {
               Our job board simplifies your job search with an intuitive swiping feature.
               Experience faster, more accurate job matches tailored to your preferences.
             </p>
-            <button id="btnCreate">Create Profile</button>
+            <button id="btnCreate">Register</button>
           </div>
           <div className="Hero2Img">
             <img src={Hero2Img} alt="Hero 2" />

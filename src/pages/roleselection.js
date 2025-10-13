@@ -10,7 +10,7 @@ function Roleselection() {
     <div className="role-selection-page">
       <div className="role-selection-container">
         {/* Left Section */}
-        <div className="left-section">
+        <div className="leftsection">
           <img 
             src={images} 
             alt="Career Matching Illustration" 
@@ -20,7 +20,7 @@ function Roleselection() {
         </div>
 
         {/* Right Section */}
-        <div className="right-section">
+        <div className="rightsection">
           <h2 className="continue-title">Continue as</h2>
           <p className="continue-subtitle">
             Choose your role to start using CareerMatch and find your perfect match.

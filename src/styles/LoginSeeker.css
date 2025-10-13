@@ -1,113 +1,78 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  width: 100%;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Background */
+/* --- Container --- */
 .loginseeker-container {
-  width: 100%;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   padding: 1rem;
-}
-
-/* Back Button */
-.back-button {
-  position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
-  background: rgba(255, 255, 255, 0.3);
-  color: #2A5298;
-  border: none;
-  border-radius: 8px;
-  padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  transition: all 0.3s ease;
-}
-
-.back-button:hover {
-  background: rgba(255, 255, 255, 0.5);
-}
-
-/* Glassmorphic Card */
-.loginseeker-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  width: 340px;
-  padding: 2rem;
-  color: #2A5298;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  min-height: 400px;
   position: relative;
-  overflow: hidden;
-  z-index: 1;
 }
 
-/* Titles */
+/* --- Card --- */
+.loginseeker-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
 .loginseeker-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.4rem;
   color: #2A5298;
   margin-bottom: 0.5rem;
 }
 
 .login-heading {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.2rem;
   color: #2A5298;
   margin-bottom: 1.5rem;
 }
 
-/* Inputs */
-.input-group {
+/* --- Form Styles --- */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Field Wrapper */
+.field-wrapper {
   position: relative;
   margin-bottom: 1rem;
 }
 
-/* Ensure inputs are fully clickable */
-.input-group input {
+/* Inputs */
+.field-wrapper input {
   width: 100%;
+  height: 44px;
   padding: 0.7rem 2.5rem;
   border: 1px solid #2A5298;
   border-radius: 25px;
   background: #fff;
-  color: #000; /* 🔥 Black text for visibility */
+  color: #000;
   font-size: 0.95rem;
   outline: none;
-  position: relative;
   z-index: 2;
   transition: all 0.3s ease;
 }
 
+.field-wrapper input::placeholder {
+  color: #6c7a99;
+}
 
-Icon styling */
-.input-icon {
+.field-wrapper input:focus {
+  border-color: #2A5298;
+  box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+}
+
+/* Field Icons */
+.field-icon {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -116,47 +81,27 @@ Icon styling */
   font-size: 1rem;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 1; /* behind input */
+  z-index: 1;
 }
 
-/* Hide icon when typing */
-.input-icon.hidden {
+.field-icon.hidden {
   opacity: 0;
   visibility: hidden;
 }
 
-
-/* Placeholder text styling */
-.input-group input::placeholder {
-  color: #6c7a99; /* Softer gray for placeholders */
-  opacity: 1;
-}
-
-/* Highlight input when typing */
-.input-group input:focus {
-   border-color: #1f3e7a;
-  box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
-  background-color: #fff;
-  color: #000; /* Ensure black text stays consistent */
-}
-
-/* Forgot password */
-.forgot-password {
+/* Forgot Password */
+.forgot-link {
   color: #2A5298;
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
-  display: block;
   text-align: right;
-  margin-bottom: 1.5rem;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 /* Login Button */
-.login-btn {
+.auth-btn {
   width: 100%;
   background: #2A5298;
   color: white;
@@ -170,42 +115,28 @@ Icon styling */
   margin-bottom: 1rem;
 }
 
-.login-btn:hover {
+.auth-btn:hover {
   background: #1f3e7a;
 }
 
 /* Divider */
 .divider {
-  display: flex;
-  align-items: center;
   text-align: center;
-  color: #2A5298;
-  font-size: 0.8rem;
   margin: 1rem 0;
+  font-size: 0.9rem;
   font-weight: 500;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid rgba(42, 82, 152, 0.3);
-}
-
-.divider span {
-  margin: 0 8px;
   color: #2A5298;
 }
 
 /* Social Buttons */
-.social-login {
+.auth-social {
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.social-btn {
+.auth-social-btn {
   flex: 1;
   display: flex;
   align-items: center;
@@ -220,73 +151,95 @@ Icon styling */
   transition: all 0.3s ease;
 }
 
-.google {
+.auth-social-btn.google {
   background: white;
   color: #DB4437;
 }
 
-.facebook {
+.auth-social-btn.facebook {
   background: #1877F2;
   color: white;
 }
 
-.google:hover {
+.auth-social-btn.google:hover {
   background: #f0f0f0;
 }
 
-.facebook:hover {
+.auth-social-btn.facebook:hover {
   background: #145dbf;
 }
 
-.social-icon {
-  font-size: 1rem;
-}
-
-/* Register */
-.register-text {
-  margin-top: 0.5rem;
+/* Register Text */
+.registert {
+  color: #2A5298;
   font-size: 0.85rem;
-  color: #2A5298;
-  font-weight: 500;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 
-.register-text a {
+.registert a {
   color: #2A5298;
-  font-weight: 700;
   text-decoration: none;
+  font-weight: 600;
 }
 
-.register-text a:hover {
+.registert a:hover {
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .loginseeker-card {
-    width: 320px;
-    padding: 1.5rem;
-  }
+/* --- Back Button --- */
+.back-button {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #2A5298;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
 
-  .login-heading {
-    font-size: 1.3rem;
+.back-button:hover {
+  background: white;
+  color: #4299e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Responsive Fixes --- */
+@media (max-width: 768px) {
+  .back-button {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
+@media (max-width: 480px) {
+  .back-button {
+    top: 0.8rem;
+    left: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    border-radius: 5px;
+  }
+}
+
+/* 📱 Specifically for iPhone SE and similar (~375px width) */
 @media (max-width: 375px) {
-  .loginseeker-card {
-    width: 300px;
-    padding: 1.25rem;
-  }
-
-  .login-heading {
-    font-size: 1.1rem;
-  }
-
-  .login-btn {
-    font-size: 0.9rem;
-  }
-
-  .social-login {
-    flex-direction: column;
+  .back-button {
+    position: fixed;
+    top: 0.7rem;
+    left: 0.7rem;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 5px;
+    z-index: 999;
   }
 }

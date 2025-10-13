@@ -12,228 +12,171 @@ body, html {
 }
 
 /* Background */
-.loginseeker-container {
+.registerseeker-container {
   width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
 }
 
 /* Glassmorphic Card */
-.loginseeker-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 380px;
-  text-align: center;
-  color: #ffffff;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+.registerseeker-card {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 16px !important;
+  padding: 2rem !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Titles */
-.loginseeker-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #2A5298;
-  margin-bottom: 0.8rem;
+.registerseeker-title {
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: #2A5298 !important;
+  margin-bottom: 0.8rem !important;
 }
 
-.login-heading {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2A5298;
-  margin-bottom: 1.5rem;
+.registerseeker-heading {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: #2A5298 !important;
+  margin-bottom: 1.5rem !important;
 }
 
 /* Input Groups */
-.input-group {
-  position: relative;
-  margin-bottom: 1rem;
+.register-input-group {
+  position: relative !important;
+  margin-bottom: 1rem !important;
 }
 
-.input-group input {
-  width: 100%;
-  padding: 0.8rem 2.2rem;
-  border: none;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  font-size: 0.95rem;
-  outline: none;
+.register-input-group input {
+  width: 100% !important;
+  padding: 0.8rem 2.2rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 25px !important;
+  background: rgba(255, 255, 255, 0.85) !important; /* 🔹 Slightly opaque white background */
+  color: #000 !important; /* 🔹 Black text = visible everywhere */
+  font-size: 0.95rem !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
 }
 
-.input-group input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
+.register-input-group input::placeholder {
+  color: #444 !important; /* 🔹 Dark gray placeholder for readability */
 }
 
-.input-icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+.register-input-group input:focus {
+  border-color: #2A5298 !important;
+  box-shadow: 0 0 5px rgba(42, 82, 152, 0.4) !important;
 }
 
-/* Options Row */
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.5rem 0 1rem;
-  font-size: 0.85rem;
-  color: #ffffff;
+/* Input Icons */
+.register-input-icon {
+  position: absolute !important;
+  left: 15px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: #2A5298 !important;
+  font-size: 1rem !important;
 }
 
-.login-options input {
-  margin-right: 5px;
+/* Back Button */
+.register-back-button {
+  position: absolute !important;
+  top: 20px !important;
+  left: 20px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #2A5298 !important;
+  border: none !important;
+  border-radius: 25px !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
 }
 
-.forgot-password {
-  color: #ffffff;
-  text-decoration: none;
+.register-back-button:hover {
+  background: #2A5298 !important;
+  color: #ffffff !important;
 }
 
-/* Login Button */
-.login-btn {
-  width: 100%;
-  background: #ffffff;
-  color: #2A5298;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Register Button */
+.register-btn {
+  width: 100% !important;
+  background: #2A5298 !important;
+  color: #ffffff !important;
+  padding: 0.75rem !important;
+  border: none !important;
+  border-radius: 25px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
 }
 
-.login-btn:hover {
-  background: #2A5298;
-  color: white;
+.register-btn:hover {
+  background: #1e3d7a !important;
 }
 
-/* Divider */
-.divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  font-size: 0.8rem;
-  margin: 1rem 0;
-  opacity: 0.9;
+/* Login Text */
+.register-login-text {
+  margin-top: 1.5rem !important;
+  font-size: 0.9rem !important;
+  color: #2A5298 !important;
 }
 
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+.register-login-text a {
+  color: #2A5298 !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
 }
 
-.divider span {
-  margin: 0 10px;
-}
-
-/* Social Buttons */
-.social-login {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.social-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  border: none;
-  border-radius: 25px;
-  padding: 0.6rem 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.google {
-  background: #fff;
-  color: #DB4437;
-}
-
-.facebook {
-  background: #1877F2;
-  color: white;
-}
-
-.google:hover {
-  background: #f0f0f0;
-}
-
-.facebook:hover {
-  background: #145dbf;
-}
-
-.social-icon {
-  font-size: 1rem;
-}
-
-/* Register */
-.register-text {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: #ffffff;
-}
-
-.register-text a {
-  color: #ffffff;
-  font-weight: 600;
-  text-decoration: none;
+.register-login-text a:hover {
+  text-decoration: underline !important;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .loginseeker-card {
-    padding: 1.5rem;
-    max-width: 90%;
+  .registerseeker-card {
+    padding: 1.5rem !important;
+    max-width: 90% !important;
   }
 
-  .login-heading {
-    font-size: 1.5rem;
+  .registerseeker-heading {
+    font-size: 1.5rem !important;
   }
 }
 
 @media (max-width: 576px) {
-  .loginseeker-card {
-    padding: 1.25rem;
-    border-radius: 12px;
+  .registerseeker-card {
+    padding: 1.25rem !important;
+    border-radius: 12px !important;
   }
 
-  .login-heading {
-    font-size: 1.3rem;
+  .registerseeker-heading {
+    font-size: 1.3rem !important;
   }
 
-  .input-group input {
-    padding: 0.7rem 2rem;
-    font-size: 0.85rem;
+  .register-input-group input {
+    padding: 0.7rem 2rem !important;
+    font-size: 0.85rem !important;
   }
 
-  .login-btn {
-    font-size: 0.9rem;
-    padding: 0.65rem;
-  }
-
-  .social-login {
-    flex-direction: column;
+  .register-btn {
+    font-size: 0.9rem !important;
+    padding: 0.65rem !important;
   }
 }
