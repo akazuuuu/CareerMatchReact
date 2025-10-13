@@ -1,3 +1,51 @@
+# CareerMatch
+
+## Overview
+
+**CareerMatch** is a job-matching web app that combines the convenience of job boards with the swipe mechanics of dating apps. It connects job seekers and employers in an interactive, real-time environment for faster and smarter hiring.
+
+---
+
+**Key Features**
+- Swipe right to apply, left to skip  
+- Separate dashboards for seekers and employers  
+- Fully responsive across devices  
+- Real-time updates powered by Firebase  
+
+---
+
+## Main Features
+
+   **For Job Seekers**
+     - Swipe-to-Apply interface  
+     - Resume Builder 
+
+   **For Employers**
+     - Swipe to review candidates  
+     - Job posting  
+
+---
+
+## Tech Stack
+
+**Frontend:** React 18, React Router, React Hooks, Custom CSS  
+**Backend:** Firebase Firestore, Firebase Storage, Realtime Database  
+**APIs:** SheetDB for authentication and data sync  
+**Hosting:** Firebase Hosting  
+
+---
+
+## Installation
+
+### Prerequisites
+- Node.js v24.9.0  
+- npm 
+- Firebase project set up  
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -32,7 +32,7 @@ const ResumeBuilder = () => {
         submittedAt: new Date(),
       });
 
-      alert("✅ Resume submitted successfully!");
+      alert("Resume submitted successfully!");
       setFormData({
         fullName: "",
         email: "",
@@ -49,7 +49,7 @@ const ResumeBuilder = () => {
         jobPreferences: "",
       });
     } catch (error) {
-      console.error("❌ Error submitting resume:", error);
+      console.error("Error submitting resume:", error);
       alert("Error submitting resume.");
     }
   };
