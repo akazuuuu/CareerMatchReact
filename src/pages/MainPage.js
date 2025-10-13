@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../pages/Firebase';
 import NavbarSeeker from '../component/NavbarSeeker';
 import '../styles/MainPage.css';
@@ -81,6 +81,19 @@ const MainPage = () => {
     if (decline) decline.style.opacity = diff < 0 ? Math.min(-diff / 150, 1) : 0;
   };
 
+  const saveSwipe = async (job, status) => {
+    try {
+      await addDoc(collection(db, 'userApplications'), {
+        jobTitle: job.title,
+        company: job.company,
+        status,
+        timestamp: serverTimestamp(),
+      });
+    } catch (err) {
+      console.error('Error saving swipe:', err);
+    }
+  };
+
   const endSwipe = () => {
     if (!draggingRef.current) return;
     draggingRef.current = false;
@@ -96,10 +109,12 @@ const MainPage = () => {
     if (diff > effectiveThreshold) {
       card.style.transform = `translateX(1200px) rotate(30deg)`;
       card.style.opacity = '0';
+      saveSwipe(jobs[currentIndex], 'Accepted');
       setTimeout(() => setCurrentIndex((p) => p + 1), 300);
     } else if (diff < -effectiveThreshold) {
       card.style.transform = `translateX(-1200px) rotate(-30deg)`;
       card.style.opacity = '0';
+      saveSwipe(jobs[currentIndex], 'Denied');
       setTimeout(() => setCurrentIndex((p) => p + 1), 300);
     } else {
       card.style.transform = `translateX(0px) rotate(0deg)`;
@@ -136,7 +151,6 @@ const MainPage = () => {
     window.addEventListener('pointerup', upHandler);
   };
 
-  // ✅ Touch event support for mobile (iPhone / Android)
   const handleTouchStart = (e, index) => {
     if (index !== currentIndex) return;
     draggingRef.current = true;
@@ -158,12 +172,19 @@ const MainPage = () => {
   const animateSwipe = (direction) => {
     const card = document.querySelector(`[data-index="${currentIndex}"]`);
     if (!card) return;
+    const job = jobs[currentIndex];
+    if (!job) return;
+
     card.style.transition = 'transform 0.35s ease, opacity 0.35s ease';
     card.style.transform =
       direction === 'right'
         ? 'translateX(1200px) rotate(30deg)'
         : 'translateX(-1200px) rotate(-30deg)';
     card.style.opacity = '0';
+
+    if (direction === 'right') saveSwipe(job, 'Accepted');
+    if (direction === 'left') saveSwipe(job, 'Denied');
+
     setTimeout(() => setCurrentIndex((p) => p + 1), 300);
   };
 
@@ -237,4 +258,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-  

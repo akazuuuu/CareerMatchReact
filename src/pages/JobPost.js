@@ -82,7 +82,7 @@ function JobPost() {
   return (
     <>
       <NavbarCompany />
-      <main className="post-job-container">
+      <main className="post-job-container" > 
         <h1>Post a Job</h1>
 
         <div className="logo-upload">
@@ -220,7 +220,7 @@ function JobPost() {
           </button>
         </form>
       </main>
-      <FooterComponent />
+
     </>
   );
 }

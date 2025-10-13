@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
 // Components
@@ -19,56 +19,73 @@ import RegisterCompany from "./pages/RegisterCompany";
 import MainPage from "./pages/MainPage";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import JobPost from "./pages/JobPost";
-import ViewApplicants from "./pages/ViewApplicants"; 
+import ViewApplicants from "./pages/ViewApplicants";
+import ApplicationTracker from "./pages/applicationTracker";
 
 function AppContent() {
   const location = useLocation();
   const path = location.pathname.toLowerCase();
 
-  const seekerNavbarPaths = ["/mainpage", "/resumebuilder"];
-  const companyNavbarPaths = ["/jobpost", "/viewapplicants"]; //  Added ViewApplicants here
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const elements = document.querySelectorAll(".scroll-animate");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [location]); // run again when route changes
+
+  const seekerNavbarPaths = ["/mainpage", "/resumebuilder", "/applicationtracker"];
+  const companyNavbarPaths = ["/jobpost", "/viewapplicants"];
   const hideNavbarPaths = [
     "/loginseeker",
     "/logincompany",
     "/registerseeker",
     "/registercompany",
   ];
-  const hideFooterPaths = ["/mainpage", "/resumebuilder", "/jobpost", "/viewapplicants"]; //  Added ViewApplicants
 
   const showSeekerNavbar = seekerNavbarPaths.includes(path);
   const showCompanyNavbar = companyNavbarPaths.includes(path);
   const showDefaultNavbar =
     !hideNavbarPaths.includes(path) && !showSeekerNavbar && !showCompanyNavbar;
-  const showFooter = !hideFooterPaths.includes(path);
 
   return (
     <div className="app-layout">
-      {/* Sidebar Navbars */}
       {showSeekerNavbar && <NavbarSeeker />}
       {showCompanyNavbar && <NavbarCompany />}
 
-      <div className="main-content">
-        {/* Default Navbar */}
+      <div className="main-wrapper">
         {showDefaultNavbar && <NavbarComponent />}
 
-        {/* Pages */}
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/jobslanding" element={<JobsLanding />} />
-          <Route path="/roleselection" element={<Roleselection />} />
-          <Route path="/loginseeker" element={<LoginSeeker />} />
-          <Route path="/logincompany" element={<LoginCompany />} />
-          <Route path="/registerseeker" element={<RegisterSeeker />} />
-          <Route path="/registercompany" element={<RegisterCompany />} />
-          <Route path="/mainpage" element={<MainPage />} />
-          <Route path="/resumebuilder" element={<ResumeBuilder />} />
-          <Route path="/jobpost" element={<JobPost />} />
-          <Route path="/viewapplicants" element={<ViewApplicants />} /> {/*  NEW ROUTE */}
-        </Routes>
+        <div className="page-content">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/jobslanding" element={<JobsLanding />} />
+            <Route path="/roleselection" element={<Roleselection />} />
+            <Route path="/loginseeker" element={<LoginSeeker />} />
+            <Route path="/logincompany" element={<LoginCompany />} />
+            <Route path="/registerseeker" element={<RegisterSeeker />} />
+            <Route path="/registercompany" element={<RegisterCompany />} />
+            <Route path="/mainpage" element={<MainPage />} />
+            <Route path="/resumebuilder" element={<ResumeBuilder />} />
+            <Route path="/jobpost" element={<JobPost />} />
+            <Route path="/viewapplicants" element={<ViewApplicants />} />
+            <Route path="/applicationtracker" element={<ApplicationTracker />} />
+          </Routes>
+        </div>
 
-        {/* Footer */}
-        {showFooter && <FooterComponent />}
+        <FooterComponent />
       </div>
     </div>
   );

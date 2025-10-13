@@ -56,17 +56,12 @@ const NavbarSeeker = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/applicationTracker">
               <FaChartBar className="icon" />
               {isExpanded && <span>Application Tracker</span>}
             </a>
           </li>
-          <li>
-            <a href="#">
-              <FaComments className="icon" />
-              {isExpanded && <span>Message Board</span>}
-            </a>
-          </li>
+        
           <li>
             <a href="/index">
               <FaQuestionCircle className="icon" />

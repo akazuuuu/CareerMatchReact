@@ -59,12 +59,7 @@ const NavbarCompany = () => {
               {isExpanded && <span>Notification</span>}
             </a>
           </li>
-          <li>
-            <a href="/help">
-              <FaQuestionCircle className="icon" />
-              {isExpanded && <span>Help</span>}
-            </a>
-          </li>
+
           <li>
             <a href="/">
               <FaSignOutAlt className="icon" />

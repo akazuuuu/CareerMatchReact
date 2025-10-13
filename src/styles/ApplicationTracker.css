@@ -1,0 +1,99 @@
+/* Container */
+.tracker-container {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Page Title */
+.tracker-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d2a86;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Table */
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.applications-table th,
+.applications-table td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+}
+
+.applications-table thead {
+  background-color: #0d2a86;
+  color: #fff;
+  font-weight: 600;
+}
+
+.applications-table tbody tr {
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.applications-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.applications-table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Status Colors */
+.status {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status.accepted {
+  color: #28a745;
+}
+
+.status.denied {
+  color: #dc3545;
+}
+
+.status.pending {
+  color: #ff9800;
+}
+
+/* No applications message */
+.no-applications {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tracker-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .applications-table th,
+  .applications-table td {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .tracker-title {
+    font-size: 1.6rem;
+  }
+}

@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/styles.css"; 
-
+import "../styles/styles.css";
 
 function FooterComponent() {
   return (
-    <footer className="footer">
+    <footer className="footer fixed-footer">
       <div className="footer-content">
         <div className="container">
           <div className="footer-grid">

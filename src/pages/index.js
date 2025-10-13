@@ -16,20 +16,20 @@ function Index() {
         <div className="mobile-only">
           <img src={mobileview} alt="Mobile View" />
         </div>
-        <h1 id="HeroTitle">
+        <h1 id="HeroTitle" className="scroll-animate">
           Your Dream <br /> Career Awaits
         </h1>
-        <p id="HeroP">
+        <p id="HeroP" className="scroll-animate">
           Connect with amazing opportunities from world-class companies. <br /> 
           Your perfect job is just one swipe away.
         </p>
-        <button id="HeroButton">
+        <button id="HeroButton" className="scroll-animate">
           Start Swiping <i className="material-icons">swipe</i>
         </button>
       </div>
 
       <div className="Container2">
-        <div className="Container2v2">
+        <div className="Container2v2"  >
           <div className="box1">
             <h1>0</h1>
             <p>Active Jobs</p>

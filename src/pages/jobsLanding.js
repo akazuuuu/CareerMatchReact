@@ -8,12 +8,12 @@ function JobsLanding() {
   return (
     <div>
       <div className="JobsTitle">
-        <h1>Discover Thousands of Jobs</h1>
+        <h1 className="scroll-animate">Discover Thousands of Jobs</h1>
       </div>
 
       <div className="JobsFlex">
         <div className="JobContainer">
-          <img src={placeholder} id="placehodler" alt="Job placeholder" />
+          <img src={placeholder} id="placehodler" alt="Job placeholder"  />
           <h2>Job Title</h2>
           <p>Company Name</p>
           <p><span className="material-icons">star</span> 4.2</p>
@@ -30,8 +30,8 @@ function JobsLanding() {
           <p>0 Jobs</p>
         </div>
 
-        <div className="JobContainer">
-          <img src={placeholder} id="placehodler" alt="Job placeholder" />
+        <div className="JobContainer" >
+          <img src={placeholder} id="placehodler" alt="Job placeholder"  />
           <h2>Job Title</h2>
           <p>Company Name</p>
           <p><span className="material-icons">star</span> 4.2</p>
@@ -43,12 +43,12 @@ function JobsLanding() {
       <div className="JobsBottom">
         <div className="BottomContainer">
           <div className="BottomHero">
-            <h1>Match the right job for you on CareerMatch</h1>
+            <h1 className="scroll-animate">Match the right job for you on CareerMatch</h1 >
             <div className="BottomButton">
               <a href="loginSeeker.html">
-                <button>Sign in</button>
+                <button className="scroll-animate">Sign in</button>
               </a>
-              <p>
+              <p className="scroll-animate">
                 Don't have an account?{" "}
                 <span>
                   <a href="registerSeeker.html">Register</a>
@@ -56,7 +56,7 @@ function JobsLanding() {
               </p>
             </div>
           </div>
-          <img src={jobsPic} id="heroBottom" alt="Jobs Hero" />
+          <img src={jobsPic} id="heroBottom" alt="Jobs Hero"  className="scroll-animate"/>
         </div>
       </div>
     </div>

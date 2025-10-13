@@ -6,12 +6,12 @@ function About() {
   return (
     <div>
       <div className="title">
-        <h1>What is CareerMatch?</h1>
+        <h1 className="scroll-animate">What is CareerMatch?</h1>
       </div>
 
       <div className="flexContent">
-        <img src={aboutPic} id="AboutPic" alt="About CareerMatch" />
-        <p>
+        <img src={aboutPic} id="AboutPic" alt="About CareerMatch" className="scroll-animate"/>
+        <p className="scroll-animate">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
           when an unknown printer took a galley of type and scrambled it to make a type 

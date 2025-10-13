@@ -55,3 +55,51 @@
   background: #4caf50;
   color: white;
 }
+
+.applicant-card {
+  background: #fff;
+  width: 70%; /* Bigger width on desktop */
+  max-width: 900px; /* Same width scaling as swipe cards */
+  padding: 40px; /* More padding for a larger look */
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.applicant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Make text bigger */
+.applicant-card h2 {
+  font-size: 1.8rem;
+  color: #103475;
+  margin-bottom: 10px;
+}
+
+.applicant-card p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 760px) {
+  .applicant-card {
+    width: 90%;
+    padding: 25px;
+    max-width: 500px;
+  }
+
+  .applicant-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .applicant-card p {
+    font-size: 1rem;
+  }
+}
