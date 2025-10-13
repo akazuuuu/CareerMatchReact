@@ -56,7 +56,7 @@ const NavbarCompany = () => {
           <li>
             <a href="/messages">
               <FaComments className="icon" />
-              {isExpanded && <span>Messages</span>}
+              {isExpanded && <span>Notification</span>}
             </a>
           </li>
           <li>

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "../styles/LoginSeeker.css";
 import {
-  FaUser,
-  FaLock,
   FaGoogle,
   FaFacebookF,
   FaArrowLeft,
@@ -74,9 +72,7 @@ const LoginSeeker = () => {
         <form onSubmit={handleSubmit} className="auth-form">
           {/* Email Field */}
           <div className="field-wrapper">
-            <FaUser
-              className={`field-icon ${formData.email ? "hidden" : ""}`}
-            />
+            
             <input
               type="email"
               name="email"
@@ -89,9 +85,7 @@ const LoginSeeker = () => {
 
           {/* Password Field */}
           <div className="field-wrapper">
-            <FaLock
-              className={`field-icon ${formData.password ? "hidden" : ""}`}
-            />
+           
             <input
               type="password"
               name="password"
@@ -141,3 +135,4 @@ const LoginSeeker = () => {
 };
 
 export default LoginSeeker;
+
