@@ -57,19 +57,13 @@ const LoginSeeker = () => {
         <FaArrowLeft /> Back
       </button>
 
-      <div className="loginseeker-card">
-        <h2 className="loginseeker-title">Welcome to CareerMatch</h2>
-        <h3 className="login-heading">Login</h3>
+  <div className="loginseeker-card">
+  <h2 className="loginseeker-title">Welcome to CareerMatch</h2>
+  <h3 className="login-heading">Login</h3>
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          <div className="field-wrapper">
-            <input
-              type="email"
-              name="email"
-              placeholder="Username or Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
+   <form onSubmit={handleSubmit} className="auth-form">
+  <div className="field-wrapper">
+  <input type="email" name="email" placeholder="Username or Email" value={formData.email} onChange={handleChange} required
             />
           </div>
 
@@ -119,7 +113,7 @@ const LoginSeeker = () => {
         </form>
       </div>
 
-      {/* ✅ Simple Popup Message */}
+      
       {popup.show && (
         <div className={`popup-message ${popup.type}`}>
           {popup.message}

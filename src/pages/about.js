@@ -5,11 +5,12 @@ import aboutPic from "../images/aboutPic.png";
 function About() {
   return (
     <div className="about-page">
+
       {/* === LEFT SECTION === */}
       <div className="about-text scroll-animate">
         <h5 className="about-subtitle">How It Started</h5>
         <h1 className="about-title">
-          Our Dream is <br /> Global Learning <br /> Transformation
+          CareerMatch <br /> 
         </h1>
         <p className="about-description">
           CareerMatch was founded by passionate educators and tech innovators who
@@ -28,20 +29,20 @@ function About() {
 
         <div className="about-stats">
           <div className="stat-card">
-            <h2>3.5</h2>
+            <h2>20</h2>
             <p>Years Experience</p>
           </div>
           <div className="stat-card">
-            <h2>23</h2>
-            <p>Project Challenge</p>
+            <h2>10k</h2>
+            <p>Companies</p>
           </div>
           <div className="stat-card">
             <h2>830+</h2>
             <p>Positive Reviews</p>
           </div>
           <div className="stat-card">
-            <h2>100K</h2>
-            <p>Trusted Students</p>
+            <h2>20k</h2>
+            <p>Job Seekers</p>
           </div>
         </div>
       </div>

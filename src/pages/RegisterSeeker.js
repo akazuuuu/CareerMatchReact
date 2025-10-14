@@ -22,7 +22,7 @@ const RegisterSeeker = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirm_password) {
-      alert("⚠️ Passwords do not match!");
+      alert("Passwords do not match!");
       return;
     }
 
@@ -46,7 +46,7 @@ const RegisterSeeker = () => {
       console.log("API Response:", result);
 
       if (response.ok && result.created) {
-        alert("✅ Registration successful!");
+        alert("Registration successful!");
         setFormData({
           first_name: "",
           last_name: "",
@@ -55,11 +55,11 @@ const RegisterSeeker = () => {
           confirm_password: "",
         });
       } else {
-        alert("❌ Failed to register. Please check your SheetDB setup.");
+        alert("Failed to register. Please check your SheetDB setup.");
       }
     } catch (error) {
       console.error("API Error:", error);
-      alert("⚠️ Error connecting to the API.");
+      alert("Error connecting to the API.");
     }
   };
 
@@ -68,92 +68,55 @@ const RegisterSeeker = () => {
       className="registerseeker-container"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      {/* Back Button */}
-      <button className="register-back-button" onClick={handleBack}>
-        <FaArrowLeft /> Back
-      </button>
+  {/* Back Button */}
+  <button className="register-back-button" onClick={handleBack}>
+  <FaArrowLeft /> Back </button>
 
-      {/* Registration Card */}
-      <div className="registerseeker-card">
-        <h2 className="registerseeker-title">Welcome to CareerMatch</h2>
-        <h3 className="registerseeker-heading">Create Your Account</h3>
+  {/* Registration Card */}
+  <div className="registerseeker-card">
+  <h2 className="registerseeker-title">Welcome to CareerMatch</h2>
+  <h3 className="registerseeker-heading">Create Your Account</h3>
 
-        <form onSubmit={handleSubmit} className="register-form">
-          {/* First Name */}
-          <div className="register-input-group">
-            <FaUser className="register-input-icon" />
-            <input
-              type="text"
-              name="first_name"
-              placeholder="First Name"
-              value={formData.first_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+  <form onSubmit={handleSubmit} className="register-form">
+          
+{/* First Name */}
+  <div className="register-input-group">
+  <FaUser className="register-input-icon" />
+  <input type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} required />
+  </div>
 
-          {/* Last Name */}
-          <div className="register-input-group">
-            <FaUser className="register-input-icon" />
-            <input
-              type="text"
-              name="last_name"
-              placeholder="Last Name"
-              value={formData.last_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
+{/* Last Name */}
+  <div className="register-input-group">
+  <FaUser className="register-input-icon" />
+  <input type="text" name="last_name" placeholder="Last Name" value={formData.last_name} onChange={handleChange} required />
+  </div>
 
-          {/* Email */}
-          <div className="register-input-group">
-            <FaEnvelope className="register-input-icon" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+{/* Email */}
+  <div className="register-input-group">
+  <FaEnvelope className="register-input-icon" />
+  <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+  </div>
 
-          {/* Password */}
-          <div className="register-input-group">
-            <FaLock className="register-input-icon" />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+{/* Password */}
+  <div className="register-input-group">
+  <FaLock className="register-input-icon" />
+  <input type="password" name="password" placeholder="Password" value={formData.password} OnChange={handleChange} required />
+  </div>
 
-          {/* Confirm Password */}
-          <div className="register-input-group">
-            <FaLock className="register-input-icon" />
-            <input
-              type="password"
-              name="confirm_password"
-              placeholder="Confirm Password"
-              value={formData.confirm_password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+{/* Confirm Password */}
+  <div className="register-input-group">
+  <FaLock className="register-input-icon" />
+  <input type="password" name="confirm_password" placeholder="Confirm Password" value={formData.confirm_password} onChange={handleChange} required />
+  </div>
 
-          {/* Submit Button */}
-          <button type="submit" className="register-btn">
-            Register
-          </button>
+{/* Submit Button */}
+  <button type="submit" className="register-btn"> Register </button>
 
-          {/* Login Redirect */}
-          <p className="register-login-text">
-            Already have an account? <a href="/login">Login</a>
-          </p>
-        </form>
+{/* Login Redirect */}
+  <p className="register-login-text"> Already have an account? <a href="/">Login</a> </p>
+  
+  </form>
+      
       </div>
     </div>
   );

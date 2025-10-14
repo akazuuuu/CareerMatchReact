@@ -85,7 +85,7 @@ const MainPage = () => {
     try {
       await addDoc(collection(db, 'userApplications'), {
         jobTitle: job.title,
-        company: job.company,
+        company: job.company, 
         status,
         timestamp: serverTimestamp(),
       });

@@ -97,24 +97,32 @@
   color: #444;
 }
 
-/* === Responsive Design === */
+/* === Tablet Screens (max-width: 900px) === */
 @media (max-width: 900px) {
   .about-page {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 50px;
+    padding: 70px 6%;
   }
 
   .about-text {
     text-align: center;
+    max-width: 650px;
   }
 
   .about-title {
     font-size: 2.2rem;
   }
 
+  .about-description {
+    font-size: 1rem;
+  }
+
   .about-stats {
     grid-template-columns: 1fr 1fr;
+    gap: 15px;
   }
 
   .about-image-container {
@@ -122,16 +130,64 @@
   }
 }
 
+/* === Mobile Screens (max-width: 600px) === */
 @media (max-width: 600px) {
+  .about-page {
+    padding: 60px 6%;
+    gap: 40px;
+  }
+
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
   .about-stats {
     grid-template-columns: 1fr;
   }
 
-  .about-title {
-    font-size: 1.9rem;
+  .stat-card {
+    padding: 20px 16px;
   }
 
+  .about-image-container {
+    max-width: 320px;
+  }
+}
+
+/* === iPhone SE (max-width: 380px) === */
+@media (max-width: 380px) {
   .about-page {
-    padding: 60px 6%;
+    padding: 50px 5%;
+    gap: 35px;
+  }
+
+  .about-title {
+    font-size: 1.7rem;
+  }
+
+  .about-description {
+    font-size: 0.9rem;
+  }
+
+  .about-image-container {
+    max-width: 280px;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .stat-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .stat-card p {
+    font-size: 0.85rem;
   }
 }

@@ -74,7 +74,7 @@ function JobPost() {
       setPreview("");
       setLogo("");
     } catch (error) {
-      console.error("❌ Error adding document: ", error);
+      console.error(" Error adding document: ", error);
       alert("Error saving job. Check console for details.");
     }
   };

@@ -1,35 +1,40 @@
-import React from "react";
-import Hero2Img from "../images/Hero2Img.png";
-import mobileview from "../images/mobileview.jpg";
-import mainVideo from "../videos/videobuilding.mp4";
-import "../styles/styles.css";
 
+import React from "react";
+import Hero2Img from "../images/Hero2Img.png";          
+import mobileview from "../images/mobileview.jpg";       
+import mainVideo from "../videos/videobuilding.mp4";     
+import "../styles/styles.css";                           
 function Index() {
   return (
     <div>
-      {/* Background Video */}
+      
       <div className="desktop-bg-container">
         <video
-          autoPlay
-          muted
-          loop
-          playsInline
+          autoPlay          
+          muted             
+          loop             
+          playsInline       
           className="desktop-bg-video"
         >
           <source src={mainVideo} type="video/mp4" />
+         
           Your browser does not support the video tag.
         </video>
       </div>
 
-      {/* Hero Section */}
+    
       <div className="HeroContainer">
+        {/* Mobile-only image background */}
         <div className="mobile-only">
           <img src={mobileview} alt="Mobile View" />
         </div>
 
+        {/* Main headline */}
         <h1 id="HeroTitle" className="scroll-animate">
           Your Dream <br /> Career Awaits
         </h1>
+
+      
         <p id="HeroP" className="scroll-animate">
           Connect with amazing opportunities from world-class companies. <br />
           Your perfect job is just one swipe away.
@@ -43,17 +48,20 @@ function Index() {
         </a>
       </div>
 
-      {/* Stats Section */}
+     
       <div className="Container2">
         <div className="Container2v2">
+    
           <div className="box1">
             <h1>0</h1>
             <p>Active Jobs</p>
           </div>
+
           <div className="box2">
             <h1>0</h1>
             <p>Top Companies</p>
           </div>
+
           <div className="box3">
             <h1>0</h1>
             <p>Employed</p>
@@ -61,9 +69,10 @@ function Index() {
         </div>
       </div>
 
-      {/* Secondary Hero Section */}
+   
       <div className="Container3">
         <div className="Container3v1">
+        
           <div className="Hero2">
             <h1>Discover Your Perfect Job Today</h1>
             <p>
@@ -72,12 +81,13 @@ function Index() {
               your preferences.
             </p>
 
-            {/* will proceed to roleselection*/}
+            {/* Button that redirects users to the registration page */}
             <a href="/roleselection" id="btnCreateLink">
               <button id="btnCreate">Register</button>
             </a>
           </div>
 
+          {/* Right-side image illustration */}
           <div className="Hero2Img">
             <img src={Hero2Img} alt="Hero 2" />
           </div>
