@@ -3,6 +3,7 @@ import { db } from '../pages/Firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import NavbarCompany from '../component/NavbarCompany';
 import '../styles/MainPage.css';
+import '../styles/ViewApplicants.css';
 
 const SWIPE_THRESHOLD = 120;
 

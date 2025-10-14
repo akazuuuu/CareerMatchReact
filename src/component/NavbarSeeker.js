@@ -44,7 +44,7 @@ const NavbarSeeker = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="/SeekerProfile">
               <FaUser className="icon" />
               {isExpanded && <span>Profile</span>}
             </a>
@@ -58,12 +58,6 @@ const NavbarSeeker = () => {
           
            
         
-          <li>
-            <a href="/index">
-              <FaQuestionCircle className="icon" />
-              {isExpanded && <span>Help</span>}
-            </a>
-          </li>
           <li>
             <a href="/">
               <FaSignOutAlt className="icon" />

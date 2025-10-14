@@ -96,17 +96,20 @@
   background: #0d2a86;
   color: #fff;
   border: none;
-  width: 32px;
-  height: 32px;
-  font-size: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 0; 
+  line-height: 1; /* prevents vertical misalignment */
+  padding: 0; /* removes extra space */
   z-index: 999;
   cursor: pointer;
   display: none;
 }
+
 /* Mobile styles */
 @media (max-width: 480px) {
   .hamburger-btn {

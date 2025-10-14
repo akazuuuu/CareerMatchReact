@@ -41,7 +41,7 @@ const LoginSeeker = () => {
 
       // Validate login
       if (user) {
-        alert("✅ Login successful!");
+        alert("Login successful!");
         setFormData({ email: "", password: "" });
         navigate("/ViewApplicants"); // Redirect to main page
       } else {
@@ -49,7 +49,7 @@ const LoginSeeker = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("⚠️ Error connecting to the database.");
+      alert("Error connecting to the database.");
     }
   };
 

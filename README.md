@@ -35,7 +35,45 @@
 
 ---
 
+## Website Flow
+
+**Index Page (Landing Page)**
+Welcomes users with a modern, responsive design featuring a video background (desktop) or static image (mobile). Highlights key stats and includes clear CTAs for registration or starting the swiping experience.
+
+**Jobs Landing Page**
+Introduces job seekers to sample job cards and call-to-action buttons for signing in or registering. Built with React.js and custom CSS for responsiveness.
+
+**Role Selection Page**
+Allows users to select between Job Seeker or Company roles using a clean split layout and navigates to the corresponding login page.
+
+**Login & Registration Pages**
+Secure and user-friendly forms for both seekers and employers, powered by SheetDB. Includes form validation, responsive layouts, and optional social login placeholders.
+
+**Main Page (Swipe Interface)**
+Central hub for job seekers—displays job postings from Firebase in swipeable cards. Users can swipe right to apply or left to decline, with real-time updates saved to Firestore.
+
+**Seeker Profile Page**
+Displays organized profile details such as skills, experience, and contact info. Includes options to download resumes or contact candidates directly.
+
+**Resume Builder**
+Interactive resume creation tool allowing seekers to add personal, educational, and professional details and upload images—saved to Firebase Firestore.
+
+**Company Dashboard (View Applicants)**
+Employers can review applicants in a Tinder-style swipe interface showing profiles, skills, and experience. Built with React.js and Firestore for real-time interactivity.
+
+**Job Post Page**
+Employers can create detailed job listings with live logo preview and real-time Firebase integration. Displays success or error alerts upon submission.
+
+---
+
 ## Installation
+
+1. Clone the Repository: git clone https://github.com/yourusername/careermatch.git
+2. Navigate to the project directory: cd careermatch
+3. Install dependencies: npm install
+4. Run the app Locally: npm start
+
+---
 
 ### Prerequisites
 - Node.js v24.9.0  

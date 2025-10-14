@@ -21,6 +21,7 @@ import ResumeBuilder from "./pages/ResumeBuilder";
 import JobPost from "./pages/JobPost";
 import ViewApplicants from "./pages/ViewApplicants";
 import ApplicationTracker from "./pages/applicationTracker";
+import SeekerProfile from "./pages/SeekerProfile";
 
 function AppContent() {
   const location = useLocation();
@@ -45,7 +46,7 @@ function AppContent() {
     return () => observer.disconnect();
   }, [location]); // run again when route changes
 
-  const seekerNavbarPaths = ["/mainpage", "/resumebuilder", "/applicationtracker"];
+  const seekerNavbarPaths = ["/mainpage", "/resumebuilder", "/applicationtracker", "/seekerprofile"];
   const companyNavbarPaths = ["/jobpost", "/viewapplicants"];
   const hideNavbarPaths = [
     "/loginseeker",
@@ -82,6 +83,7 @@ function AppContent() {
             <Route path="/jobpost" element={<JobPost />} />
             <Route path="/viewapplicants" element={<ViewApplicants />} />
             <Route path="/applicationtracker" element={<ApplicationTracker />} />
+            <Route path="/seekerprofile" element={<SeekerProfile />} />
           </Routes>
         </div>
 

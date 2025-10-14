@@ -1,83 +1,150 @@
-.JobsTitle{
-    text-align: center;
-    font-size: 2.5em;
-    margin-top: 20px;
-   color: white;
-    margin-bottom: 20px;
+.JobsTitle {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 20px;
+  color: white;
+  margin-bottom: 20px;
 }
 
-.JobContainer{
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    width: 500px;
-    text-align: center;
-    font-family: "Poppins", sans-serif;
-    background-color: #7ea1e0;
+.JobContainer {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 350px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background-color: #7ea1e0;
 }
 
-.JobContainer img{
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+.JobContainer img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-.JobsFlex{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding-bottom: 100px;
+.JobsFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+/* ✅ Clean, compact and centered CareerMatch section */
+.JobsBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding-bottom: 80px;
 }
 
 .BottomContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;   
-    justify-content: space-between; 
-    max-width: 100%;
-    gap: 2rem; 
-    padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  width: 80%;
+  max-width: 950px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  gap: 2rem;
 }
 
 .BottomHero {
-    font-size: 2rem;
-    width: 50%; 
+  width: 55%;
+}
+
+.BottomHero h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.BottomButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.BottomButton button {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.BottomButton button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+}
+
+.BottomButton p {
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+  color: #e0e0e0;
+}
+
+.BottomButton a {
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.BottomButton a:hover {
+  text-decoration: underline;
 }
 
 #heroBottom {
-    max-width: 40%;  
-    height: auto;
+  width: 35%;
+  height: auto;
 }
 
+/* ✅ RESPONSIVE FIXES */
+@media (max-width: 760px) and (min-width: 320px) {
+  .BottomContainer {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1rem;
+    width: 90%;
+    background-color: transparent;
+    box-shadow: none;
+  }
 
-@media(max-width: 760px) and (min-width: 320px) {
-    
-    button{
-        width: 60%;
-        font-size: 1rem;
-        height: auto;
-        border-radius: 50px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
+  .BottomHero {
+    width: 100%;
+  }
 
-    .BottomContainer {
-        flex-direction: column-reverse;
-        text-align: center;
-        margin-top: -120px;
-    }
+  .BottomHero h1 {
+    font-size: 1.6rem;
+  }
 
-    .BottomHero {
-        width: 100%; 
-        font-size: 1.5rem;
-    }
+  #heroBottom {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
 
-    #heroBottom {
-        max-width: 100%;  
-        height: auto;
-    }
+  .BottomButton {
+    align-items: center;
+  }
 
-
+  .BottomButton button {
+    width: 60%;
+    font-size: 1rem;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 }
